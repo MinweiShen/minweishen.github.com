@@ -1,51 +1,663 @@
-extends base
+<!doctype html>
 
-block title
-  title= page.title + ' | ' + config.title
 
-block content
-  .post
-    h1.post-title= page.title
-    .post-meta= page.date.format('ll')
-      if page.categories.length > 0
-        span= ' | '
-        span.category
-          for category in page.categories.toArray()
-            a(href=url_for(category.path))= category.name
-      if theme.busuanzi == true
-        script(src='https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js', async)
-        span#busuanzi_container_page_pv= ' | '
-          span#busuanzi_value_page_pv
-          span= ' ' + __('Hits')
-    if theme.duoshuo
-      a.ds-thread-count(data-thread-key=page.path, href=url_for(page.path) + '#comments')
-    if theme.disqus
-      a.disqus-comment-count(data-disqus-identifier=page.path, href=url_for(page.path) + '#disqus_thread')
-    if page.toc
-      div(class='clear')
-        div(id='toc' class='toc-article')
-          div(class='toc-title')= __('contents')
-          != toc(page.content)
-    .post-content
-      != page.content
-    if theme.shareto == true
-      script(type='text/javascript', src=url_for(theme.js) + '/share.js' + '?v=' + theme.version, async)
-      a.article-share-link(data-url='#{page.permalink}', data-id='#{page._id}')= __('shareto')
-    include _partial/tag
-    include _partial/post_nav
-    if theme.duoshuo
-      div(class='ds-share flat' data-thread-key=page.path, data-title=page.title, data-url=page.permalink)
-         .ds-share-inline
-            ul.ds-share-icons-16
-              li(data-toggle='ds-share-icons-more')
-                a(class='ds-more' href='javascript:void(0);') 分享到：
-              li
-                a(class='ds-weibo' href='javascript:void(0);' data-service='weibo') 微博
-              li
-                a(class='ds-qzone' href='javascript:void(0);' data-service='qzone') QQ空间
-              li
-                a(class='ds-qqt' href='javascript:void(0);' data-service='qqt') 腾讯微博
-              li
-                a(class='ds-wechat' href='javascript:void(0);' data-service='wechat') 微信
-            .ds-share-icons-more
-    include _partial/comments
+
+  
+
+
+<html class="theme-next muse use-motion" lang="">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="在网页上使用Python抓取信息时，特别是中文的网页，常常遇到编码问题，导致字符串不能正常print或者保存。虽然每次遇到问题都可以通过迅速google解决一下，但我觉得有必要在此梳理一下，希望下次不会再遇到同样的麻烦。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Python unicode, str以及字符编码">
+<meta property="og:url" content="http://yoursite.com/2016/04/26/Python-unicode-str以及字符编码/index.html">
+<meta property="og:site_name" content="放假的电话">
+<meta property="og:description" content="在网页上使用Python抓取信息时，特别是中文的网页，常常遇到编码问题，导致字符串不能正常print或者保存。虽然每次遇到问题都可以通过迅速google解决一下，但我觉得有必要在此梳理一下，希望下次不会再遇到同样的麻烦。">
+<meta property="og:updated_time" content="2017-02-11T20:18:42.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Python unicode, str以及字符编码">
+<meta name="twitter:description" content="在网页上使用Python抓取信息时，特别是中文的网页，常常遇到编码问题，导致字符串不能正常print或者保存。虽然每次遇到问题都可以通过迅速google解决一下，但我觉得有必要在此梳理一下，希望下次不会再遇到同样的麻烦。">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2016/04/26/Python-unicode-str以及字符编码/"/>
+
+
+
+
+
+  <title> Python unicode, str以及字符编码 | 放假的电话 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">放假的电话</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+    
+      <p class="site-subtitle"></p>
+    
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Startseite
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archiv
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/04/26/Python-unicode-str以及字符编码/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="Minwei Shen">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/images/avatar.gif">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="放假的电话">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="放假的电话" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Python unicode, str以及字符编码
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Veröffentlicht am</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-04-26T10:26:11-07:00">
+                2016-04-26
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>在网页上使用Python抓取信息时，特别是中文的网页，常常遇到编码问题，导致字符串不能正常print或者保存。虽然每次遇到问题都可以通过迅速google解决一下，但我觉得有必要在此梳理一下，希望下次不会再遇到同样的麻烦。<br><a id="more"></a></p>
+<blockquote>
+<p>我使用的是Python 2.7，在3.x里文件的默认编码方式似乎已经改成了utf-8</p>
+</blockquote>
+<h1 id="字符集"><a href="#字符集" class="headerlink" title="字符集"></a>字符集</h1><p>要讲这个问题，首先来说一说字符集。所谓的字符集，简单来说就是一个系统能表示的所有字符，或者说，是“词汇量”。比如，大家所熟知的ASCII字符集，每个字符都使用1个字节来表示，一共包含256个字符。对于普通的英文输入，这么大的字符集已经足够，包含了一般会用到的字母以及符号。但是，对于其他语言，比如说中文，ASCII是完全不能胜任的，因为ASCII完全没有定义中文字符。基于这个原因，世界上出现了很多其他字符集，比如中文的GB2312, 日文的JIS X 0208， 以及不能不提的unicode。</p>
+<h2 id="Unicode"><a href="#Unicode" class="headerlink" title="Unicode"></a>Unicode</h2><p><a href="https://zh.wikipedia.org/wiki/Unicode" target="_blank" rel="external">Unicode</a>是一个非常大的字符集，通过4个字节来保存一个字符，理论上可以包含2^32个不同的字符。它至今仍在发展之中，不断有新的字符被加入Unicode字符集。</p>
+<h1 id="字符编码"><a href="#字符编码" class="headerlink" title="字符编码"></a>字符编码</h1><p>讲完字符集，来讲讲字符编码。众所周知，在计算机里，所有的东西最终都以’01’比特来存储。假设现在我们有一个字符—“我”，这个“我”字应该在计算机里用什么样的”01”序列来存储呢？决定这个的，就是字符编码！同样的字符，在不同的字符编码方式下，有可能变成不同的’01’序列。同理，同样的’01’序列，如果用不同的字符编码来解码，也可能会得到不同的东西。例如，对于unicode字符集，常见的有utf-8, utf-16, utf-32三种编码方式，同样的字符“你好”,在三种不同的编码方式下，可能会变成完全不相同的几个’01’序列。<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">s = <span class="string">u'你好'</span></div><div class="line"><span class="keyword">print</span> repr(s.encode(<span class="string">'utf-8'</span>)) <span class="comment"># 输出 \xe4\xbd\xa0\xe5\xa5\xbd</span></div><div class="line"><span class="keyword">print</span> repr(s.encode(<span class="string">'utf-16'</span>)) <span class="comment"># 输出 \xff\xfe`O&#125;Y</span></div><div class="line"><span class="keyword">print</span> repr(s.encode(<span class="string">'utf-32'</span>)) <span class="comment"># 输出 \xff\xfe\x00\x00`O\x00\x00&#125;Y\x00\x00</span></div></pre></td></tr></table></figure></p>
+<h2 id="encode-amp-decode"><a href="#encode-amp-decode" class="headerlink" title="encode &amp; decode"></a>encode &amp; decode</h2><p>在Python，常见的跟字符串相关的对象有两种。一是以u开头的unicode，例如u’你好’，另一种是str对象。在我们谈论encode和decode的时候，特别要注意，encode只能使用在unicode对象上，表示对其进行编码，例如:<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">s = <span class="string">u'你好'</span></div><div class="line"><span class="keyword">print</span> s.encode(<span class="string">'utf-8'</span>)</div></pre></td></tr></table></figure></p>
+<p>decode只能使用在str对象上，以此获得一个unicode对象。注意，在调用decode时，必须保证使用的是原来的encode的编码，否则会报错。例如：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">s = <span class="string">u'你好'</span> <span class="comment"># unicode 你好</span></div><div class="line">t = s.encode(<span class="string">'utf-16'</span>) <span class="comment"># t是一个str对象，通过对s进行utf-16的编码获得</span></div><div class="line"><span class="keyword">print</span> t.decode(<span class="string">'utf-8'</span>) <span class="comment"># Error！无法进行decode，因为指定的编码方式错误</span></div></pre></td></tr></table></figure></p>
+<h2 id="py文件的编码"><a href="#py文件的编码" class="headerlink" title="py文件的编码"></a>py文件的编码</h2><p>默认的.py文件使用的是ACSII编码，因此如果你在文件中使用了中文，一般都会报错。正确的处理方法是在文件开头指定编码方式，例如添加:<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># -*- coding: utf-8 -*-</span></div></pre></td></tr></table></figure></p>
+<p>这里，其实起作用的只有<code>#</code>,<code>coding: utf-8</code>，所以，写成这样也是没有问题的:<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># coding: utf-8</span></div></pre></td></tr></table></figure></p>
+<h1 id="实践"><a href="#实践" class="headerlink" title="实践"></a>实践</h1><p>说了这么多，来看2个例子，比较实际。</p>
+<h2 id="py文件的编码-1"><a href="#py文件的编码-1" class="headerlink" title=".py文件的编码"></a>.py文件的编码</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># -*- coding: utf-8 -*-</span></div><div class="line">s = <span class="string">u'你好'</span></div><div class="line"><span class="keyword">print</span> s.encode(<span class="string">'utf-8'</span>) <span class="comment"># 输出你好</span></div><div class="line"><span class="keyword">print</span> s.encode(<span class="string">'gbk'</span>) <span class="comment"># 没有输出。print试图使用utf-8来打印s.encode('gbk')，因为编码方式不相同，导致无法正确打印</span></div></pre></td></tr></table></figure>
+<p>如果改成这样就没有问题<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># -*- coding: gbk -*-</span></div><div class="line">s = <span class="string">u'你好'</span></div><div class="line"><span class="keyword">print</span> s.encode(<span class="string">'gbk'</span>)</div></pre></td></tr></table></figure></p>
+<h2 id="文件读写"><a href="#文件读写" class="headerlink" title="文件读写"></a>文件读写</h2><p>读写文件的时候，要注意，文件保存的是’01’序列，也就是经过编码后的字符。由于编码方式不同，如果读取时没有正确解码，就会出现问题。举一个例子：<br>example.txt使用的是utf-16 BE(<a href="https://en.wikipedia.org/wiki/UTF-16" target="_blank" rel="external">16bit big-endian</a>)编码，保存的是汉字“你好”<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># -*- coding: utf-8 -*-</span></div><div class="line"><span class="keyword">with</span> open(<span class="string">'example.txt'</span>,<span class="string">'r'</span>) <span class="keyword">as</span> f:</div><div class="line">    <span class="keyword">for</span> line <span class="keyword">in</span> f.readlines():</div><div class="line">        <span class="keyword">print</span> line.decode(<span class="string">"utf-16 BE"</span>).encode(<span class="string">'utf-8'</span>) <span class="comment"># 输出“你好”</span></div><div class="line">        <span class="keyword">print</span> type(line.decode(<span class="string">'utf-16 BE'</span>))  <span class="comment"># 输出 type unicode</span></div><div class="line">        <span class="keyword">print</span> line.decode(<span class="string">'utf-16'</span>).encode(<span class="string">'utf-8'</span>) <span class="comment"># 输出恏絙，也就是所谓的“乱码”</span></div></pre></td></tr></table></figure></p>
+<p>在上面的例子里，通过正确的解码并使用指定的utf-8编码，可以正确读取文件中的内容。一旦使用错误的编码方式，就会出现乱码。</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/04/24/记一次尴尬的mac问题解决/" rel="next" title="记一次尴尬的mac问题解决">
+                <i class="fa fa-chevron-left"></i> 记一次尴尬的mac问题解决
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+          
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Inhaltsverzeichnis
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Übersicht
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="Minwei Shen" />
+          <p class="site-author-name" itemprop="name">Minwei Shen</p>
+          <p class="site-description motion-element" itemprop="description"></p>
+        </div>
+        <nav class="site-state motion-element">
+        
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">2</span>
+                <span class="site-state-item-name">Artikel</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-name">Kategorien</span>
+              
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-name">Tags</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#字符集"><span class="nav-number">1.</span> <span class="nav-text">字符集</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Unicode"><span class="nav-number">1.1.</span> <span class="nav-text">Unicode</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#字符编码"><span class="nav-number">2.</span> <span class="nav-text">字符编码</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#encode-amp-decode"><span class="nav-number">2.1.</span> <span class="nav-text">encode & decode</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#py文件的编码"><span class="nav-number">2.2.</span> <span class="nav-text">py文件的编码</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#实践"><span class="nav-number">3.</span> <span class="nav-text">实践</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#py文件的编码-1"><span class="nav-number">3.1.</span> <span class="nav-text">.py文件的编码</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#文件读写"><span class="nav-number">3.2.</span> <span class="nav-text">文件读写</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Minwei Shen</span>
+</div>
+
+
+<div class="powered-by">
+  Erstellt mit  <a class="theme-link" href="https://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+
+</body>
+</html>
