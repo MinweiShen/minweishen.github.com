@@ -93,7 +93,7 @@
 <meta property="og:url" content="http://mwshen.com/2017/02/15/setTimeout到底做了什么/index.html">
 <meta property="og:site_name" content="放假的电话">
 <meta property="og:description" content="对很多人来说，Javascript的单线程以及事件驱动，即使不是了解得非常透彻，但也绝对不会没听说过。setTimeout，更是在提到这2个概念时，经常会举到的例子。关于Javascript单线程的文章，网上一搜一大把，对我自己来说，可能没有什么写的意义。直到有一天，我知道了setTimeout(handler, 0)这个用法，觉得单单写一写setTimeout，似乎倒是个挺有意思的事情。">
-<meta property="og:updated_time" content="2017-02-16T06:18:40.000Z">
+<meta property="og:updated_time" content="2017-02-16T22:33:40.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="setTimeout到底做了什么">
 <meta name="twitter:description" content="对很多人来说，Javascript的单线程以及事件驱动，即使不是了解得非常透彻，但也绝对不会没听说过。setTimeout，更是在提到这2个概念时，经常会举到的例子。关于Javascript单线程的文章，网上一搜一大把，对我自己来说，可能没有什么写的意义。直到有一天，我知道了setTimeout(handler, 0)这个用法，觉得单单写一写setTimeout，似乎倒是个挺有意思的事情。">
@@ -401,7 +401,7 @@
 <p>设定2个同样延时的定时器，会发现，在所有的浏览器里，都会输出<code>t1 t2</code>。可见，浏览器在维护定时器队列的时候，是先进先出的，这也比较符合直觉。</p>
 <p>最后，再来看看<code>setTimeout(handler, 0)</code>这个用法，例如：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">setTimeout(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">'finish'</span>);</div><div class="line">&#125;, <span class="number">0</span>);</div><div class="line"></div><div class="line"><span class="keyword">for</span> ( ... ) &#123;</div><div class="line">    ....</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 <p>有了之前的知识，可以知道，上面的代码，可以保证会在for循环后立即输出<code>finish</code>。执行的过程就是生成一个定时器，加入定时器队列。在浏览器忙于执行for循环的时候，并不会检查这个队列，直到执行完，会立即把定时器加入事件队列并处理，输出<code>finish</code>。</p>
-<p>题外话，即使定义了0延迟，其实也有一个规定的最小延迟<a href="https://developer.mozilla.org/en-US/docs/Web/API/WindowOrWorkerGlobalScope/setTimeout" target="_blank" rel="external">4ms</a>。在统一成4ms之前，最小的延迟是10ms。</p>
+<p>题外话，即使定义了0延迟，其实也有一个规定的最小延迟<a href="https://developer.mozilla.org/en-US/docs/Web/API/WindowOrWorkerGlobalScope/setTimeout#Nested_timeouts_forced_to_&gt;4ms" target="_blank" rel="external">4ms</a>。在统一成4ms之前，最小的延迟是10ms。</p>
 
       
     </div>
@@ -447,6 +447,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/02/16/Fluent-Python读书笔记/" rel="prev" title="Fluent Python读书笔记">
+                Fluent Python读书笔记 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -514,7 +518,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-count">4</span>
                 <span class="site-state-item-name">posts</span>
               </a>
             </div>
