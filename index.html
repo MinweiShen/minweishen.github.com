@@ -788,16 +788,15 @@
       
         
           
-            <p>说来尴尬，以前一直不知道原来directory是需要x权限的，也就是说，当执行<code>ls -l</code>命令的时候，文件夹一般会显示’drwxr-xr-x’。一次，因为非常脑残的原因，把/private目录的权限设置成了’drwxr–r–’，导致macbook完全无法正常开机，一开机就白苹果。幸好，经过一段时间的google，解决了问题，特记录之。</p>
-<ol>
-<li>开机，按住commnd+s,进入<a href="https://support.apple.com/en-us/HT201573" target="_blank" rel="external">single user mode</a></li>
-<li>此时，你只有只读权限。通过<code>mount -o /</code>命令，获得根目录的写权限</li>
-<li>之后， 用<code>chmod</code>命令，就可以顺利修改文件夹权限</li>
-<li>重启，问题解决</li>
-</ol>
-<p>题外话，如果用这招对付电脑小白，很凶狠，后果自负啊。</p>
-
-          
+          说来尴尬，以前一直不知道原来directory是需要x权限的，也就是说，当执行ls -l命令的时候，文件夹一般会显示’drwxr-xr-x’。一次，因为非常脑残的原因，把/private目录的权限设置成了’drwxr–r–’，导致macbook完全无法正常开机，一开机就白苹果。幸好，经过一段时间的g
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2016/04/24/记一次尴尬的mac问题解决/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
