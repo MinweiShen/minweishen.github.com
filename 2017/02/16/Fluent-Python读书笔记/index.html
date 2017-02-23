@@ -95,7 +95,7 @@
 <meta property="og:site_name" content="放假的电话">
 <meta property="og:description" content="Chapter 1: The Python Data ModelPython的数据模型可以理解为一些实现了特殊方法的对象。这些特殊方法一般是xxx的形式(行话叫dunder method)。Python通过调用这些特殊函数，实现了一系列的操作。
 例如，obj[key]方法实际是obj.getitem(key)的调用(dunder getitem)。">
-<meta property="og:updated_time" content="2017-02-22T07:47:08.000Z">
+<meta property="og:updated_time" content="2017-02-22T17:53:55.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Fluent Python读书笔记">
 <meta name="twitter:description" content="Chapter 1: The Python Data ModelPython的数据模型可以理解为一些实现了特殊方法的对象。这些特殊方法一般是xxx的形式(行话叫dunder method)。Python通过调用这些特殊函数，实现了一系列的操作。
@@ -420,7 +420,7 @@
 <h2 id="Memory-View"><a href="#Memory-View" class="headerlink" title="Memory View"></a>Memory View</h2><p>可以用来实现类似c的内存操作。</p>
 <h1 id="Chapter-3-Dictionaries-and-Sets"><a href="#Chapter-3-Dictionaries-and-Sets" class="headerlink" title="Chapter 3: Dictionaries and Sets"></a>Chapter 3: Dictionaries and Sets</h1><p>dict有个方法叫setdefault，虽然不常用，但是需要的时候很方便。<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span> key <span class="keyword">not</span> <span class="keyword">in</span> my_dict: </div><div class="line">    my_dict[key] = []</div><div class="line">my_dict[key].append(new_value)</div></pre></td></tr></table></figure></p>
 <p>等价于<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">my_dict.setdefault(key, []).append(new_value)</div></pre></td></tr></table></figure></p>
-<p>如果不适用dict，上面的代码也能写成：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">my_dict = collections.defaultdict(list)</div><div class="line">my_dict[key].append(new_value)</div></pre></td></tr></table></figure></p>
+<p>如果不使用dict，上面的代码也能写成：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">my_dict = collections.defaultdict(list)</div><div class="line">my_dict[key].append(new_value)</div></pre></td></tr></table></figure></p>
 
       
     </div>
