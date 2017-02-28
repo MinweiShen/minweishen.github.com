@@ -71,7 +71,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="JS," />
+  <meta name="keywords" content="CSS," />
 
 
 
@@ -87,16 +87,19 @@
 
 
 
-<meta name="description" content="对很多人来说，Javascript的单线程以及事件驱动，即使不是了解得非常透彻，但也绝对不会没听说过。setTimeout，更是在提到这2个概念时，经常会举到的例子。关于Javascript单线程的文章，网上一搜一大把，对我自己来说，可能没有什么写的意义。直到有一天，我知道了setTimeout(handler, 0)这个用法，觉得单单写一写setTimeout，似乎倒是个挺有意思的事情。">
+<meta name="description" content="这是关于white-spece属性的一个小总结。不得不承认，写这个，实在是自己基础不好。
+根据MDN上的例子,对于这样的一段html代码：1234567&amp;lt;p&amp;gt;    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore m">
 <meta property="og:type" content="article">
-<meta property="og:title" content="setTimeout到底做了什么">
-<meta property="og:url" content="http://mwshen.com/2017/02/15/setTimeout到底做了什么/index.html">
+<meta property="og:title" content="white-space属性总结">
+<meta property="og:url" content="http://mwshen.com/2017/02/28/white-space属性总结/index.html">
 <meta property="og:site_name" content="放假的电话">
-<meta property="og:description" content="对很多人来说，Javascript的单线程以及事件驱动，即使不是了解得非常透彻，但也绝对不会没听说过。setTimeout，更是在提到这2个概念时，经常会举到的例子。关于Javascript单线程的文章，网上一搜一大把，对我自己来说，可能没有什么写的意义。直到有一天，我知道了setTimeout(handler, 0)这个用法，觉得单单写一写setTimeout，似乎倒是个挺有意思的事情。">
-<meta property="og:updated_time" content="2017-02-16T22:33:40.000Z">
+<meta property="og:description" content="这是关于white-spece属性的一个小总结。不得不承认，写这个，实在是自己基础不好。
+根据MDN上的例子,对于这样的一段html代码：1234567&amp;lt;p&amp;gt;    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore m">
+<meta property="og:updated_time" content="2017-02-28T18:26:05.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="setTimeout到底做了什么">
-<meta name="twitter:description" content="对很多人来说，Javascript的单线程以及事件驱动，即使不是了解得非常透彻，但也绝对不会没听说过。setTimeout，更是在提到这2个概念时，经常会举到的例子。关于Javascript单线程的文章，网上一搜一大把，对我自己来说，可能没有什么写的意义。直到有一天，我知道了setTimeout(handler, 0)这个用法，觉得单单写一写setTimeout，似乎倒是个挺有意思的事情。">
+<meta name="twitter:title" content="white-space属性总结">
+<meta name="twitter:description" content="这是关于white-spece属性的一个小总结。不得不承认，写这个，实在是自己基础不好。
+根据MDN上的例子,对于这样的一段html代码：1234567&amp;lt;p&amp;gt;    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore m">
 
 
 
@@ -124,13 +127,13 @@
 
 
 
-  <link rel="canonical" href="http://mwshen.com/2017/02/15/setTimeout到底做了什么/"/>
+  <link rel="canonical" href="http://mwshen.com/2017/02/28/white-space属性总结/"/>
 
 
 
 
 
-  <title> setTimeout到底做了什么 | 放假的电话 </title>
+  <title> white-space属性总结 | 放假的电话 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="en">
@@ -294,7 +297,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://mwshen.com/2017/02/15/setTimeout到底做了什么/">
+  <link itemprop="mainEntityOfPage" href="http://mwshen.com/2017/02/28/white-space属性总结/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="Minwei Shen">
@@ -318,7 +321,7 @@
             
             
               
-                setTimeout到底做了什么
+                white-space属性总结
               
             
           </h2>
@@ -333,8 +336,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-02-15T21:23:47-08:00">
-                2017-02-15
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-02-28T10:08:00-08:00">
+                2017-02-28
               </time>
             
 
@@ -352,8 +355,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2017/02/15/setTimeout到底做了什么/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2017/02/15/setTimeout到底做了什么/" itemprop="commentCount"></span>
+                <a href="/2017/02/28/white-space属性总结/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2017/02/28/white-space属性总结/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -384,24 +387,16 @@
       
 
       
-        <p>对很多人来说，Javascript的单线程以及事件驱动，即使不是了解得非常透彻，但也绝对不会没听说过。setTimeout，更是在提到这2个概念时，经常会举到的例子。关于Javascript单线程的文章，网上一搜一大把，对我自己来说，可能没有什么写的意义。直到有一天，我知道了<code>setTimeout(handler, 0)</code>这个用法，觉得单单写一写<code>setTimeout</code>，似乎倒是个挺有意思的事情。<br><a id="more"></a><br><code>setTimeout</code>最简单的用法，就像下面一样：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">setTimeout(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">'Hello World'</span>);</div><div class="line">&#125;, <span class="number">1000</span>);</div></pre></td></tr></table></figure></p>
-<p>这段代码会在<em>大约</em>1秒钟之后打印出<code>Hello World</code>。这里，之所以会用到<em>大约</em>2个字，是因为setTimeout所设置的时间并不是精确的，而是一个最小的等待时间。在上面的例子里，由于没有其它的任务在执行，输出<code>Hello World</code>的时间会非常接近1秒。但是，如果当前浏览器正在执行非常耗时Javascript代码，输出<code>Hello World</code>的时间可能会远远大于1秒。</p>
-<p>在看过上面的例子后，再看下面的代码<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">setTimeout(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">'t1'</span>);</div><div class="line">&#125;, <span class="number">100</span>)</div><div class="line"></div><div class="line">setTimeout(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">'t2'</span>);</div><div class="line">&#125;, <span class="number">200</span>)</div><div class="line"></div><div class="line"><span class="keyword">var</span> loopLength = <span class="number">1000</span>;</div><div class="line"><span class="keyword">for</span>(<span class="keyword">var</span> i=<span class="number">0</span>; i&lt; loopLength; i++) &#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="number">1</span>);</div><div class="line">&#125;</div><div class="line"></div><div class="line">setTimeout(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">'t3'</span>);</div><div class="line">&#125;, <span class="number">50</span>)</div></pre></td></tr></table></figure></p>
-<p>这些代码最后会输出什么呢？根据setTimeout设置的时间，似乎比较合理的是<code>t3 t1 t2</code>。但是，实际输出的结果，有可能是<code>t1 t2 t3</code>, <code>t3 t1 t2</code>或者<code>t1 t3 t2</code>!</p>
-<p>对结果产生影响的，就是其中的那个for循环。根据loopLength设置的不同，for循环会执行不同的时间。由于Javascript是单线程的，在执行这个for循环的时候，没有办法正确响应这些setTimeout函数，导致了输出的不同。这里，就牵涉到一个问题，就是setTimeout到底干了什么？</p>
-<p>根据<a href="https://html.spec.whatwg.org/multipage/webappapis.html#dom-settimeout" target="_blank" rel="external">HTML的定义规范</a>，setTimeout实际会产生一个定时器，并会把这个定时器加入到一个由浏览器维护的队列里。在浏览器空闲的时候，它会检查这个定时器的队列，如果发现有某个定时器已经到了指定的等待时间，就会把相应的函数再加入Javascript的事件队列里。所谓的事件队列，就是一个由事件以及其对应的处理函数(handler)所构成的队列。</p>
-<p>回到上面的例子</p>
-<ol>
-<li>假设for循环执行的时间小于50ms，那么浏览器有足够的时间处理3个setTimeout函数，输出的便是<code>t3 t1 t2</code>。</li>
-<li>如果for循环的时间在50ms到100ms之间，那么在执行完代码后，由于第三个setTimeout已经满足了至少50ms的等待时间，会第一个输出，最后输出的结果也是<code>t3 t1 t2</code>。</li>
-<li>如果for循环时间在100ms到200ms之间，在执行完for循环后，第一个setTimeout已经满足了最小延迟的时间，会第一个输出，最后结果是<code>`t1 t3 t2</code>。</li>
-<li>如果for循环的时间大于200ms,那么执行完时，3个setTimeout都已经满足了最小等待时间，最后输出的结果是<code>t1 t2 t3</code></li>
-</ol>
-<p>上面的4点，如果仔细看的话，会发现其实有一个前提，就是先加入队列的定时器如果时间到了，会先被取出来加入时间队列。之前也提到了，浏览器会维护这个定时器的队列，但并没有规定说一定是一个先进先出的队列。怎么才能知道浏览器到底是怎么执行的呢？下面这段代码可以试着找出浏览器处理定时器队列的方法：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">setTimeout(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">'t1'</span>);</div><div class="line">&#125;, <span class="number">100</span>)</div><div class="line"></div><div class="line">setTimeout(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">'t2'</span>);</div><div class="line">&#125;, <span class="number">100</span>)</div></pre></td></tr></table></figure></p>
-<p>设定2个同样延时的定时器，会发现，在所有的浏览器里，都会输出<code>t1 t2</code>。可见，浏览器在维护定时器队列的时候，是先进先出的，这也比较符合直觉。</p>
-<p>最后，再来看看<code>setTimeout(handler, 0)</code>这个用法，例如：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">setTimeout(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">'finish'</span>);</div><div class="line">&#125;, <span class="number">0</span>);</div><div class="line"></div><div class="line"><span class="keyword">for</span> ( ... ) &#123;</div><div class="line">    ....</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>有了之前的知识，可以知道，上面的代码，可以保证会在for循环后立即输出<code>finish</code>。执行的过程就是生成一个定时器，加入定时器队列。在浏览器忙于执行for循环的时候，并不会检查这个队列，直到执行完，会立即把定时器加入事件队列并处理，输出<code>finish</code>。</p>
-<p>题外话，即使定义了0延迟，其实也有一个规定的最小延迟<a href="https://developer.mozilla.org/en-US/docs/Web/API/WindowOrWorkerGlobalScope/setTimeout#Nested_timeouts_forced_to_&gt;4ms" target="_blank" rel="external">4ms</a>。在统一成4ms之前，最小的延迟是10ms。</p>
+        <p>这是关于<code>white-spece</code>属性的一个小总结。不得不承认，写这个，实在是自己基础不好。</p>
+<p>根据<a href="https://developer.mozilla.org/en-US/docs/Web/CSS/white-space" target="_blank" rel="external">MDN</a>上的例子,对于这样的一段html代码：<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span>    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</div><div class="line">   </div><div class="line">   Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</div><div class="line">   </div><div class="line">   Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</div><div class="line">   </div><div class="line">   Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.<span class="tag">&lt;/<span class="name">p</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<p>通过设置<code>p</code>元素的<code>white-space</code>，可以达到不同的显示效果。</p>
+<h1 id="不保留空白"><a href="#不保留空白" class="headerlink" title="不保留空白"></a>不保留空白</h1><h2 id="normal"><a href="#normal" class="headerlink" title="normal"></a>normal</h2><p>这是<code>white-space</code>的默认设置，相当于移除了所有的空白跟newline符，变成了一大段文字。text会根据p的大小自动换行。</p>
+<h2 id="nowrap"><a href="#nowrap" class="headerlink" title="nowrap"></a>nowrap</h2><p>跟normal类似，移除了空白跟newline，而且text不会自动换行。根据p的<code>overflow</code>属性，过长的文字可能会隐藏，或者显示一个scroll bar。</p>
+<h1 id="保留空白"><a href="#保留空白" class="headerlink" title="保留空白"></a>保留空白</h1><p>保留空白的属性都以pre开头。</p>
+<h2 id="pre"><a href="#pre" class="headerlink" title="pre"></a>pre</h2><p>保留空白跟newline，但是文字不会自动换行。</p>
+<h2 id="pre-wrap"><a href="#pre-wrap" class="headerlink" title="pre-wrap"></a>pre-wrap</h2><p>保留空白跟newline，文字自动换行。</p>
+<h2 id="pre-line"><a href="#pre-line" class="headerlink" title="pre-line"></a>pre-line</h2><p>保留newline，但是移除空白，文字自动换行。我个人觉得这个显示效果是最好的，但是以前一直不知道这个属性。</p>
+<h1 id="Summary"><a href="#Summary" class="headerlink" title="Summary"></a>Summary</h1><p>更多关于<code>white-space</code>的信息，可以查看<a href="https://developer.mozilla.org/en-US/docs/Web/CSS/white-space" target="_blank" rel="external">MDN</a>，上面还有个非常生动的可交互的例子。</p>
 
       
     </div>
@@ -425,7 +420,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/JS/" rel="tag"># JS</a>
+            <a href="/tags/CSS/" rel="tag"># CSS</a>
           
         </div>
       
@@ -438,8 +433,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/04/26/Python-unicode-str以及字符编码/" rel="next" title="Python unicode, str以及字符编码">
-                <i class="fa fa-chevron-left"></i> Python unicode, str以及字符编码
+              <a href="/2017/02/27/解耦你的数据/" rel="next" title="解耦你的数据">
+                <i class="fa fa-chevron-left"></i> 解耦你的数据
               </a>
             
           </div>
@@ -447,10 +442,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/02/16/Fluent-Python读书笔记/" rel="prev" title="Fluent Python读书笔记">
-                Fluent Python读书笔记 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -504,8 +495,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
+      <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/avatar.jpg"
@@ -561,6 +561,22 @@
 
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#不保留空白"><span class="nav-number">1.</span> <span class="nav-text">不保留空白</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#normal"><span class="nav-number">1.1.</span> <span class="nav-text">normal</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#nowrap"><span class="nav-number">1.2.</span> <span class="nav-text">nowrap</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#保留空白"><span class="nav-number">2.</span> <span class="nav-text">保留空白</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#pre"><span class="nav-number">2.1.</span> <span class="nav-text">pre</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#pre-wrap"><span class="nav-number">2.2.</span> <span class="nav-text">pre-wrap</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#pre-line"><span class="nav-number">2.3.</span> <span class="nav-text">pre-line</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Summary"><span class="nav-number">3.</span> <span class="nav-text">Summary</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
     </div>
@@ -703,9 +719,9 @@
 
     <script type="text/javascript">
       var disqus_shortname = 'mwshen';
-      var disqus_identifier = '2017/02/15/setTimeout到底做了什么/';
+      var disqus_identifier = '2017/02/28/white-space属性总结/';
 
-      var disqus_title = "setTimeout到底做了什么";
+      var disqus_title = "white-space属性总结";
 
 
       function run_disqus_script(disqus_script) {
