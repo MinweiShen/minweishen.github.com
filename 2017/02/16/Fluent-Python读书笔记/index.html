@@ -95,7 +95,7 @@
 <meta property="og:site_name" content="放假的电话">
 <meta property="og:description" content="Chapter 1: The Python Data ModelPython的数据模型可以理解为一些实现了特殊方法的对象。这些特殊方法一般是xxx的形式(行话叫dunder method)。Python通过调用这些特殊函数，实现了一系列的操作。
 例如，obj[key]方法实际是obj.getitem(key)的调用(dunder getitem)。">
-<meta property="og:updated_time" content="2017-02-22T17:53:55.000Z">
+<meta property="og:updated_time" content="2017-02-23T06:35:50.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Fluent Python读书笔记">
 <meta name="twitter:description" content="Chapter 1: The Python Data ModelPython的数据模型可以理解为一些实现了特殊方法的对象。这些特殊方法一般是xxx的形式(行话叫dunder method)。Python通过调用这些特殊函数，实现了一系列的操作。
@@ -421,6 +421,12 @@
 <h1 id="Chapter-3-Dictionaries-and-Sets"><a href="#Chapter-3-Dictionaries-and-Sets" class="headerlink" title="Chapter 3: Dictionaries and Sets"></a>Chapter 3: Dictionaries and Sets</h1><p>dict有个方法叫setdefault，虽然不常用，但是需要的时候很方便。<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span> key <span class="keyword">not</span> <span class="keyword">in</span> my_dict: </div><div class="line">    my_dict[key] = []</div><div class="line">my_dict[key].append(new_value)</div></pre></td></tr></table></figure></p>
 <p>等价于<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">my_dict.setdefault(key, []).append(new_value)</div></pre></td></tr></table></figure></p>
 <p>如果不使用dict，上面的代码也能写成：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">my_dict = collections.defaultdict(list)</div><div class="line">my_dict[key].append(new_value)</div></pre></td></tr></table></figure></p>
+<h2 id="只读的dict"><a href="#只读的dict" class="headerlink" title="只读的dict"></a>只读的dict</h2><p>python3.3添加了一个types.MappingProxyType,可以生成一个只读的dict对象。</p>
+<h2 id="set"><a href="#set" class="headerlink" title="set"></a>set</h2><p><code>found = len(set(needles) &amp; set(haystack))</code>可以找出needles中同时属于haystack的元素，非常pythonic。</p>
+<h2 id="set和dict的实现"><a href="#set和dict的实现" class="headerlink" title="set和dict的实现"></a>set和dict的实现</h2><p>dict内部通过一个hashtable实现，一般这个hashtable总是有大约三分之一的空闲。如果小于这个值，会重新分配更大的空间，并把现有的值拷贝进新空间。在进行dict[key]的时候，首先算出hash(key)或者key.__hash__(),用结果的hash值的后几位（取决于当前hashtable的大小）最为index，在hashtable中查找。如果对应的index为空，则KeyError。如果不为空，且对应index的（key， value）match当前的key，hit。如果key不match，则根据特定算法取hash中的某几位作为index，再次搜索，直到KeyError或者hit。</p>
+<p>由于用了稀疏的hashtable，dict在空间上不是很efficient。</p>
+<p>所以，如果要存储大量数据，list of dict的空间会比list of namedtuple多很多。如果保证key是一定的，用namedtuple会比价好。</p>
+<p>python3里, .keys(), .items(), .values()返回的是view，行为更接近set， 而是不是list。同时，它们也可以直接反应dict变化后的值。</p>
 
       
     </div>
@@ -466,6 +472,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/02/27/解耦你的数据/" rel="prev" title="解耦你的数据">
+                解耦你的数据 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -542,7 +552,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-count">5</span>
                 <span class="site-state-item-name">posts</span>
               </a>
             </div>
@@ -560,7 +570,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">2</span>
+                <span class="site-state-item-count">3</span>
                 <span class="site-state-item-name">tags</span>
               </a>
             </div>
@@ -595,7 +605,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Chapter-1-The-Python-Data-Model"><span class="nav-number">1.</span> <span class="nav-text">Chapter 1: The Python Data Model</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#内置方法"><span class="nav-number">1.1.</span> <span class="nav-text">内置方法</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Chapter-2-An-Array-of-Sequences"><span class="nav-number">2.</span> <span class="nav-text">Chapter 2: An Array of Sequences</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#List-comprehensions-and-Generator-Expressions"><span class="nav-number">2.1.</span> <span class="nav-text">List comprehensions and Generator Expressions</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Tuples-Are-Not-Just-Immutable-Lists"><span class="nav-number">2.2.</span> <span class="nav-text">Tuples Are Not Just Immutable Lists</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#namedtuple"><span class="nav-number">2.3.</span> <span class="nav-text">namedtuple</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#slice"><span class="nav-number">2.4.</span> <span class="nav-text">slice</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#using-with-sequences"><span class="nav-number">2.5.</span> <span class="nav-text">using += with sequences</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#bisect"><span class="nav-number">2.6.</span> <span class="nav-text">bisect</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#array-array"><span class="nav-number">2.7.</span> <span class="nav-text">array.array</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#deque-and-other-queues"><span class="nav-number">2.8.</span> <span class="nav-text">deque and other queues</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Memory-View"><span class="nav-number">2.9.</span> <span class="nav-text">Memory View</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Chapter-3-Dictionaries-and-Sets"><span class="nav-number">3.</span> <span class="nav-text">Chapter 3: Dictionaries and Sets</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Chapter-1-The-Python-Data-Model"><span class="nav-number">1.</span> <span class="nav-text">Chapter 1: The Python Data Model</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#内置方法"><span class="nav-number">1.1.</span> <span class="nav-text">内置方法</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Chapter-2-An-Array-of-Sequences"><span class="nav-number">2.</span> <span class="nav-text">Chapter 2: An Array of Sequences</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#List-comprehensions-and-Generator-Expressions"><span class="nav-number">2.1.</span> <span class="nav-text">List comprehensions and Generator Expressions</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Tuples-Are-Not-Just-Immutable-Lists"><span class="nav-number">2.2.</span> <span class="nav-text">Tuples Are Not Just Immutable Lists</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#namedtuple"><span class="nav-number">2.3.</span> <span class="nav-text">namedtuple</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#slice"><span class="nav-number">2.4.</span> <span class="nav-text">slice</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#using-with-sequences"><span class="nav-number">2.5.</span> <span class="nav-text">using += with sequences</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#bisect"><span class="nav-number">2.6.</span> <span class="nav-text">bisect</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#array-array"><span class="nav-number">2.7.</span> <span class="nav-text">array.array</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#deque-and-other-queues"><span class="nav-number">2.8.</span> <span class="nav-text">deque and other queues</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Memory-View"><span class="nav-number">2.9.</span> <span class="nav-text">Memory View</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Chapter-3-Dictionaries-and-Sets"><span class="nav-number">3.</span> <span class="nav-text">Chapter 3: Dictionaries and Sets</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#只读的dict"><span class="nav-number">3.1.</span> <span class="nav-text">只读的dict</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#set"><span class="nav-number">3.2.</span> <span class="nav-text">set</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#set和dict的实现"><span class="nav-number">3.3.</span> <span class="nav-text">set和dict的实现</span></a></li></ol></li></ol></div>
             
 
           </div>
