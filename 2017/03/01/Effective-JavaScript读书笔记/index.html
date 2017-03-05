@@ -1,0 +1,865 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="en">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="JS," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="‘use strict’
+注意JS的版本
+如果JS文件会拼接成一个大文件，注意‘use strict’。理想情况是把每个文件中的函数都放到一个IIFE里，并在这个IIFE里指定strict。
+注意测试JS在不同版本的JS engine中的运行情况，特别是如果你还用到了JS的一些新特性，或者没有被ECMAScript写入标准的特性。
+
+Floating NumberJS中的所有数字都是‘double">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Effective JavaScript读书笔记">
+<meta property="og:url" content="http://mwshen.com/2017/03/01/Effective-JavaScript读书笔记/index.html">
+<meta property="og:site_name" content="放假的电话">
+<meta property="og:description" content="‘use strict’
+注意JS的版本
+如果JS文件会拼接成一个大文件，注意‘use strict’。理想情况是把每个文件中的函数都放到一个IIFE里，并在这个IIFE里指定strict。
+注意测试JS在不同版本的JS engine中的运行情况，特别是如果你还用到了JS的一些新特性，或者没有被ECMAScript写入标准的特性。
+
+Floating NumberJS中的所有数字都是‘double">
+<meta property="og:updated_time" content="2017-03-05T22:48:21.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Effective JavaScript读书笔记">
+<meta name="twitter:description" content="‘use strict’
+注意JS的版本
+如果JS文件会拼接成一个大文件，注意‘use strict’。理想情况是把每个文件中的函数都放到一个IIFE里，并在这个IIFE里指定strict。
+注意测试JS在不同版本的JS engine中的运行情况，特别是如果你还用到了JS的一些新特性，或者没有被ECMAScript写入标准的特性。
+
+Floating NumberJS中的所有数字都是‘double">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"hide"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: 'SS60WKV7VH',
+      apiKey: 'c6ede119f05fac327d1fa0465273a5e7',
+      indexName: 'mwshen.com',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://mwshen.com/2017/03/01/Effective-JavaScript读书笔记/"/>
+
+
+
+
+
+  <title> Effective JavaScript读书笔记 | 放假的电话 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+
+
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-59159721-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">放假的电话</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+    
+      <h1 class="site-subtitle" itemprop="description"></h1>
+    
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            Search
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  
+  <div class="algolia-popup popup">
+    <div class="algolia-search">
+      <div class="algolia-search-input-icon">
+        <i class="fa fa-search"></i>
+      </div>
+      <div class="algolia-search-input" id="algolia-search-input"></div>
+    </div>
+
+    <div class="algolia-results">
+      <div id="algolia-stats"></div>
+      <div id="algolia-hits"></div>
+      <div id="algolia-pagination" class="algolia-pagination"></div>
+    </div>
+
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+  </div>
+
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://mwshen.com/2017/03/01/Effective-JavaScript读书笔记/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="Minwei Shen">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/images/avatar.jpg">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="放假的电话">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="放假的电话" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+            
+            
+              
+                Effective JavaScript读书笔记
+              
+            
+          </h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-03-01T01:13:31-08:00">
+                2017-03-01
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/03/01/Effective-JavaScript读书笔记/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2017/03/01/Effective-JavaScript读书笔记/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o"></i>
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>
+            </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="‘use-strict’"><a href="#‘use-strict’" class="headerlink" title="‘use strict’"></a>‘use strict’</h2><ol>
+<li>注意JS的版本</li>
+<li>如果JS文件会拼接成一个大文件，注意‘use strict’。理想情况是把每个文件中的函数都放到一个IIFE里，并在这个IIFE里指定strict。</li>
+<li>注意测试JS在不同版本的JS engine中的运行情况，特别是如果你还用到了JS的一些新特性，或者没有被ECMAScript写入标准的特性。</li>
+</ol>
+<h2 id="Floating-Number"><a href="#Floating-Number" class="headerlink" title="Floating Number"></a>Floating Number</h2><p>JS中的所有数字都是‘double’类型的。不过在进行bitwise的操作时，会转成32bit integer运算。<br>例如：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="number">8</span> | <span class="number">1</span> === <span class="number">9</span></div><div class="line"></div><div class="line">(<span class="number">8</span>).toString(<span class="number">2</span>) === <span class="string">'1000'</span></div><div class="line">(<span class="number">1</span>).toString(<span class="number">2</span>) === <span class="string">'0001'</span></div><div class="line"><span class="built_in">parseInt</span>(<span class="string">'1001'</span>, <span class="number">2</span>) === <span class="number">9</span></div></pre></td></tr></table></figure></p>
+<p>因为是double类型的，所以JS中的数字运算并不是绝对精确的：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="number">0.1</span> + <span class="number">0.2</span>; <span class="comment">// 0.30000000000000004</span></div><div class="line"></div><div class="line">(<span class="number">0.1</span> + <span class="number">0.2</span>) + <span class="number">0.3</span>; <span class="comment">// 0.6000000000000001 </span></div><div class="line"><span class="number">0.1</span> + (<span class="number">0.2</span> + <span class="number">0.3</span>); <span class="comment">// 0.6</span></div></pre></td></tr></table></figure></p>
+<p>如果精度很重要，可以采用先扩大倍数，再缩小倍数的方法来减小精度损失。例如上面的运算相当于：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">(<span class="number">1</span> + <span class="number">2</span> + <span class="number">3</span>) / <span class="number">10</span></div></pre></td></tr></table></figure></p>
+<h2 id="Implicit-Coercion"><a href="#Implicit-Coercion" class="headerlink" title="Implicit Coercion"></a>Implicit Coercion</h2><p>JS中的隐式类型转换往往会产生意想不到的结果。</p>
+<p>判断一个值是NaN, 唯一可靠的就是<code>x !== x</code>，因为NaN是唯一一个不等于自身的值。</p>
+<p>false, 0, -0, “”, NaN, null, undefined会隐式转换成false，其他值在逻辑运算中都转成true。</p>
+<h2 id="Prefer-Primitives-to-Object-Wrappers"><a href="#Prefer-Primitives-to-Object-Wrappers" class="headerlink" title="Prefer Primitives to Object Wrappers"></a>Prefer Primitives to Object Wrappers</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="string">'hello world'</span>.toUpperCase() == <span class="keyword">new</span> <span class="built_in">String</span>(<span class="string">'hello world'</span>).toUpperCase()</div></pre></td></tr></table></figure>
+<p>primitive在调用方法的时候，会隐式转换成对应的wrapper类型。</p>
+<h2 id="Avoid-using-with-Mixed-Types"><a href="#Avoid-using-with-Mixed-Types" class="headerlink" title="Avoid using == with Mixed Types"></a>Avoid using == with Mixed Types</h2><p><code>==</code>判等时，如果比较的数据类型不一致，会进行隐式类型转换。由于转换的不确定性，容易产生未知的结果。所以，尽量使用<code>===</code>。</p>
+<h2 id="Learn-the-Limits-of-Semicolon-Insertion"><a href="#Learn-the-Limits-of-Semicolon-Insertion" class="headerlink" title="Learn the Limits of Semicolon Insertion"></a>Learn the Limits of Semicolon Insertion</h2><p>在以<code>(, [, +, -, /</code>开头的的语句前加<code>;</code>，可以保证避免因为上一句语句没有<code>;</code>而导致的错误，特别是在有文件拼接的情况下。</p>
+<h2 id="Think-of-Strings-As-Sequences-of-16-Bit-Code-Units"><a href="#Think-of-Strings-As-Sequences-of-16-Bit-Code-Units" class="headerlink" title="Think of Strings As Sequences of 16-Bit Code Units"></a>Think of Strings As Sequences of 16-Bit Code Units</h2><p>JS一开始实现的string，通过2字节定长来表示一个字符。但是由于unicode字符集的扩展，2字节不够用，UTF-16这种变长的编码方式会用到2或者4个字节来表示一个字符。因此，JS在判断字符串长度，charAt()之类操作上会有问题，主要是字符串里有4字节的字符的情况下。JS默认是以2字节为单位来处理字符串的。如果要处理unicode，最好是依赖一些3rd party的library。</p>
+<h2 id="Minimize-Use-of-the-Global-Object"><a href="#Minimize-Use-of-the-Global-Object" class="headerlink" title="Minimize Use of the Global Object"></a>Minimize Use of the Global Object</h2><p>尽量避免使用global变量，不过通过global变量来判断platform是否支持某些特性是个好主意。</p>
+<h2 id="Get-Comfortable-with-Closures"><a href="#Get-Comfortable-with-Closures" class="headerlink" title="Get Comfortable with Closures"></a>Get Comfortable with Closures</h2><p>Closure如果访问了外部变量，其实它保存的是一个外部变量的引用。因此，closure也可以修改外部变量。</p>
+<h2 id="Understand-Variable-Hoisting"><a href="#Understand-Variable-Hoisting" class="headerlink" title="Understand Variable Hoisting"></a>Understand Variable Hoisting</h2><p>JS只有词法作用域，或者说函数作用域，因此所有变量声明都会被提升到函数最开始的地方。唯一的一个例外是<code>try...catch...</code>语句，<code>catch</code>捕获的变量的作用域只在<code>catch</code>语句内。</p>
+<h2 id="Beware-of-Unportable-Scoping-of-Block-Local-Function-Declarations"><a href="#Beware-of-Unportable-Scoping-of-Block-Local-Function-Declarations" class="headerlink" title="Beware of Unportable Scoping of Block-Local Function Declarations"></a>Beware of Unportable Scoping of Block-Local Function Declarations</h2><p>不要在<code>{}</code>block里定义函数。 如果要根据条件变化函数，记得用var先声明。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">f</span>(<span class="params"></span>) </span>&#123; <span class="keyword">return</span> <span class="string">"global"</span>; &#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params">x</span>) </span>&#123;</div><div class="line">  <span class="keyword">var</span> g = f, result = []; </div><div class="line">  <span class="keyword">if</span> (x) &#123;</div><div class="line">    g = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123; <span class="keyword">return</span> <span class="string">"local"</span>; &#125;;</div><div class="line">    result.push(g());</div><div class="line">  &#125; </div><div class="line">  result.push(g()); <span class="keyword">return</span> result;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h2 id="Avoid-Creating-Local-Variables-with-eval"><a href="#Avoid-Creating-Local-Variables-with-eval" class="headerlink" title="Avoid Creating Local Variables with eval"></a>Avoid Creating Local Variables with <em>eval</em></h2><p><code>eval</code>会污染作用域，跟strict模式也不能很好相处，如果非要用eval，比较安全的做法是把它放到一个IIFE里：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> y = <span class="string">"global"</span>; </div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params">src</span>) </span>&#123;</div><div class="line">  (<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123; <span class="built_in">eval</span>(src); &#125;)();</div><div class="line">  <span class="keyword">return</span> y; </div><div class="line">&#125;</div><div class="line">test(<span class="string">"var y = 'local';"</span>); <span class="comment">// "global" </span></div><div class="line">test(<span class="string">"var z = 'local';"</span>); <span class="comment">// "global"</span></div></pre></td></tr></table></figure></p>
+<h2 id="Prefer-indirect-eval-over-direct-eval"><a href="#Prefer-indirect-eval-over-direct-eval" class="headerlink" title="Prefer indirect eval over direct eval"></a>Prefer indirect eval over direct eval</h2><p>使用indirect的eval更安全，更高效，因为indirect的eval只是用global作用域，使用的方法有：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> x = <span class="string">"global"</span>; </div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="keyword">var</span> x = <span class="string">"local"</span>;</div><div class="line">  <span class="keyword">var</span> f = <span class="built_in">eval</span>;</div><div class="line">  <span class="keyword">return</span> f(<span class="string">"x"</span>); <span class="comment">// indirect eval</span></div><div class="line">&#125;</div><div class="line">test(); <span class="comment">// "global"</span></div></pre></td></tr></table></figure></p>
+<p>或者<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">(<span class="number">0</span>, <span class="built_in">eval</span>)(src)</div></pre></td></tr></table></figure></p>
+<h2 id="Understand-the-Difference-between-Function-Method-and-Constructor-Calls"><a href="#Understand-the-Difference-between-Function-Method-and-Constructor-Calls" class="headerlink" title="Understand the Difference between Function, Method, and Constructor Calls"></a>Understand the Difference between Function, Method, and Constructor Calls</h2><p>在ES5里，‘use strict’规定默认的<code>this</code>不再绑定到全局对象，而是绑定到<code>undefined</code>。这会尽快暴露出可能的错误，因为访问<code>undefined.xxx</code>会直接报错，但是访问<code>window.xxx</code>可能返回<code>undefined</code>。</p>
+<h2 id="Item-21-Use-apply-to-Call-Functions-with-Different-Numbers-of-Arguments"><a href="#Item-21-Use-apply-to-Call-Functions-with-Different-Numbers-of-Arguments" class="headerlink" title="Item 21: Use apply to Call Functions with Different Numbers of Arguments"></a>Item 21: Use apply to Call Functions with Different Numbers of Arguments</h2><p>很多地方说.apply()的用法跟.call()差不多，都可以绑定this，只是传参数的方法不同。但是这里讲到了另一个.apply()的用法，更实际一些。例如，有个函数<code>average</code>，接受任意多个参数，<code>average(1, 2, 3,  ....)</code>。现在，如果有个一个array叫做<code>score</code>,我怎么算<code>score</code>的平均值呢？答案就是用<code>average.apply(null, score)</code>。</p>
+<h2 id="Use-a-Variable-to-Save-a-Reference-to-arguments"><a href="#Use-a-Variable-to-Save-a-Reference-to-arguments" class="headerlink" title="Use a Variable to Save a Reference to arguments"></a>Use a Variable to Save a Reference to arguments</h2><p>如果使用了了arguments，注意function嵌套。内层的函数会隐式创建一个新的arguments。如果要用到外层的arguments，记得用一个变量引用外层的arguments。</p>
+<h2 id="Never-modify-proto"><a href="#Never-modify-proto" class="headerlink" title="Never modify __proto__"></a>Never modify __proto__</h2><p>通过__proto__修改原型是很危险的，例如下面的例子，即使发生了继承，任然可以动态给其他变量增加方法，甚至修改方法。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">A</span>(<span class="params"></span>) </span>&#123;&#125;;</div><div class="line">A.prototype.saya = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">'a'</span>);</div><div class="line">&#125;</div><div class="line"><span class="keyword">var</span> a = <span class="keyword">new</span> A();</div><div class="line">a.saya();</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">B</span>(<span class="params"></span>) </span>&#123;&#125;</div><div class="line">B.prototype = <span class="keyword">new</span> A();</div><div class="line">B.prototype.sayb = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">'b'</span>);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">var</span> b = <span class="keyword">new</span> B();</div><div class="line">b.__proto__.__proto__.sayb = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">'new b'</span>);</div><div class="line">&#125;</div><div class="line">b.saya();</div><div class="line">b.sayb();</div><div class="line">a.sayb();</div><div class="line"><span class="built_in">console</span>.log(b.__proto__.__proto__);</div></pre></td></tr></table></figure></p>
+<h2 id="Make-Your-Constructors-new-Agnostic"><a href="#Make-Your-Constructors-new-Agnostic" class="headerlink" title="Make Your Constructors new-Agnostic"></a>Make Your Constructors new-Agnostic</h2><p>通过下面的方法，是你的constructor在没有new的情况下，也能正确工作。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">User</span>(<span class="params">name, passwordHash</span>) </span>&#123; </div><div class="line">  <span class="keyword">if</span> (!(<span class="keyword">this</span> <span class="keyword">instanceof</span> User)) &#123;</div><div class="line">    <span class="keyword">return</span> <span class="keyword">new</span> User(name, passwordHash);</div><div class="line">  &#125;</div><div class="line">  <span class="keyword">this</span>.name = name;</div><div class="line">  <span class="keyword">this</span>.passwordHash = passwordHash; </div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>不过我觉得这么做倒是没什么必要，毕竟code review或者代码里会很快发现没有<code>new</code>这种问题。我觉得直接<code>use strict</code>，让它尽快报错就可以了。</p>
+<h2 id="Call-Superclass-Constructors-from-Subclass-Constructors"><a href="#Call-Superclass-Constructors-from-Subclass-Constructors" class="headerlink" title="Call Superclass Constructors from Subclass Constructors"></a>Call Superclass Constructors from Subclass Constructors</h2><p>看一下下面的例子：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Parent</span>(<span class="params">name</span>) </span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">'init parent'</span>);</div><div class="line">    <span class="keyword">this</span>.name = name;</div><div class="line">    <span class="keyword">this</span>.secret = <span class="string">'xxx'</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Child</span>(<span class="params">name, age</span>) </span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">'init child'</span>);</div><div class="line">    Parent.call(<span class="keyword">this</span>, name)</div><div class="line">    <span class="keyword">this</span>.age = age;</div><div class="line">&#125;</div><div class="line"></div><div class="line">Child.prototype = <span class="built_in">Object</span>.create(Parent.prototype);</div><div class="line"><span class="comment">// Child.prototype = new Parent();</span></div><div class="line">Child.prototype.constructor = Child;</div><div class="line"></div><div class="line"></div><div class="line"><span class="keyword">var</span> a = <span class="keyword">new</span> Child(<span class="string">'Tom'</span>, <span class="number">14</span>);</div><div class="line"><span class="keyword">var</span> b = <span class="keyword">new</span> Child(<span class="string">'John'</span>, <span class="number">15</span>);</div><div class="line"><span class="built_in">console</span>.log(a.name, a.__proto__.name);</div><div class="line"><span class="built_in">console</span>.log(a, b);</div></pre></td></tr></table></figure></p>
+<p>建议使用<code>Child.prototype = Object.create(Parent.prototype)</code>而不是<code>Child.prototype = new Parent(&#39;Papa&#39;)</code>。原因如下：</p>
+<ol>
+<li>首先，我们可能没有一个合适的<code>name</code>来进行new Parent()，如果不使用任何参数，new Parent()可能会报错。</li>
+<li>其次，new Parent()操作是多余的。</li>
+<li>另外，通过<code>a.__proto__.name</code>，会发现如果用了new，prototype也会有个<code>name</code>属性，而实际上<code>name</code>属性应该是属于Child的实例的。</li>
+</ol>
+<p>Note: 其实如果不考虑原型链之类的，javascript里所有的东西都可以当做函数。prototype类似于名空间。一般情况下只要通过call和apply指定正确的<code>this</code>，任何函数都是可以直接执行的。</p>
+<p>记住： The superclass constructor should only be invoked from the subclass constructor, not when creating the subclass prototype.</p>
+<h2 id="Use-null-Prototypes-to-Prevent-Prototype-Pollution"><a href="#Use-null-Prototypes-to-Prevent-Prototype-Pollution" class="headerlink" title="Use null Prototypes to Prevent Prototype Pollution"></a>Use null Prototypes to Prevent Prototype Pollution</h2><p>为了避免XXX.prototype.xxx = xxx污染prototype，有些人就出了把null作为prototype，例如A.prototype=null。然而，这种方法在ES5之前并没有用，new A()产生的对象的prototype还是Object。不过，在ES5里，可以通过Object.create()实现：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> o = <span class="built_in">Object</span>.create(<span class="literal">null</span>);</div><div class="line"><span class="built_in">Object</span>.getPrototypeOf(o) === <span class="literal">null</span>; <span class="comment">// true</span></div></pre></td></tr></table></figure></p>
+<h2 id="Never-Add-Enumerable-Properties-to-Object-prototype"><a href="#Never-Add-Enumerable-Properties-to-Object-prototype" class="headerlink" title="Never Add Enumerable Properties to Object.prototype"></a>Never Add Enumerable Properties to Object.prototype</h2><p>给Object.prototype添加属性会污染prototype。ES5里添加了新的<code>defineProperty</code>方法，可以设置<code>enumerable</code>避免该属性被遍历。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">Object</span>.defineProperty(<span class="built_in">Object</span>.prototype, <span class="string">"allKeys"</span>, &#123; </div><div class="line">  <span class="attr">value</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="keyword">var</span> result = [];</div><div class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> key <span class="keyword">in</span> <span class="keyword">this</span>) &#123;</div><div class="line">        result.push(key);</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> result; </div><div class="line">  &#125;,</div><div class="line">  <span class="attr">writable</span>: <span class="literal">true</span>,</div><div class="line">  <span class="attr">enumerable</span>: <span class="literal">false</span>,</div><div class="line">  <span class="attr">configurable</span>: <span class="literal">true</span> &#125;</div><div class="line">);</div></pre></td></tr></table></figure></p>
+<h2 id="Reuse-Generic-Array-Methods-on-Array-Like-Objects"><a href="#Reuse-Generic-Array-Methods-on-Array-Like-Objects" class="headerlink" title="Reuse Generic Array Methods on Array-Like Objects"></a>Reuse Generic Array Methods on Array-Like Objects</h2><p>Array.prototype的所有方法都足够generic，可以用在Arrary-like的object上，例如函数的arguments。唯独一个方法，concat，会测试参数的<code>[[Class]]</code>。如果不是Arrary，会当作一个元素加入array。解决的办法就是先生成一个真正的Array。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">namesColumn</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="keyword">return</span> [<span class="string">"Names"</span>].concat([].slice.call(<span class="built_in">arguments</span>));</div><div class="line">&#125;</div><div class="line">namesColumn(<span class="string">"Alice"</span>, <span class="string">"Bob"</span>, <span class="string">"Chris"</span>); <span class="comment">// ["Names", "Alice", "Bob", "Chris"]</span></div></pre></td></tr></table></figure></p>
+<h2 id="Distinguish-between-Array-and-Array-Like"><a href="#Distinguish-between-Array-and-Array-Like" class="headerlink" title="Distinguish between Array and Array-Like"></a>Distinguish between Array and Array-Like</h2><p>ES5引入的<code>Array.isArray</code>方法，比``x instanceof Array<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">## Use Recursion for Asynchronous Loops</div><div class="line">异步的递归函数，可以大大减少stack的利用。</div><div class="line">```javascript</div><div class="line">function downloadOneAsync(urls, onsuccess, onfailure) &#123; </div><div class="line">  var n = urls.length;</div><div class="line">  function tryNextURL(i) &#123; </div><div class="line">    if (i &gt;= n) &#123;</div><div class="line">      onfailure(&quot;all downloads failed&quot;);</div><div class="line">      return; </div><div class="line">    &#125;</div><div class="line">    downloadAsync(urls[i], onsuccess, function() &#123; tryNextURL(i + 1);&#125;); </div><div class="line">  &#125;</div><div class="line">  tryNextURL(0);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>每次执行tryNextURL都会马上返回，不会压栈。回掉函数会负责执行下一个递归。感觉有点像广度优先的搜索。</p>
+<h2 id="Don’t-Block-the-Event-Queue-on-Computation"><a href="#Don’t-Block-the-Event-Queue-on-Computation" class="headerlink" title="Don’t Block the Event Queue on Computation"></a>Don’t Block the Event Queue on Computation</h2><p>尽管有event queue，如果handler耗时很长，还是会破坏用户体验。解决的几个常见办法是：</p>
+<ol>
+<li>使用Worker线程。不过并不是所有平台都实现了Worker线程，而且跟Worker线程的通信也是很耗费资源的。</li>
+<li>把很花时间的计算break，并加入一个callback函数，变成异步的。循环可以通过setTimeout变成异步的。</li>
+</ol>
+<h2 id="Never-Call-Asynchronous-Callbacks-Synchronously"><a href="#Never-Call-Asynchronous-Callbacks-Synchronously" class="headerlink" title="Never Call Asynchronous Callbacks Synchronously"></a>Never Call Asynchronous Callbacks Synchronously</h2><p>不这么做的主要原因是，会破坏api调用者的期望。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">downloadCachingAsync(<span class="string">"file.txt"</span>, <span class="function"><span class="keyword">function</span>(<span class="params">file</span>) </span>&#123; </div><div class="line">  <span class="built_in">console</span>.log(<span class="string">"finished"</span>); <span class="comment">// might happen first</span></div><div class="line">&#125;);</div><div class="line"><span class="built_in">console</span>.log(<span class="string">"starting"</span>);</div></pre></td></tr></table></figure></p>
+<p>例如上面的例子里，如果’finished’有时在‘starting’之前输出，有时在之后，会给人造成很大困扰。</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/JS/" rel="tag"># JS</a>
+          
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/02/28/white-space属性总结/" rel="next" title="white-space属性总结">
+                <i class="fa fa-chevron-left"></i> white-space属性总结
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.jpg"
+               alt="Minwei Shen" />
+          <p class="site-author-name" itemprop="name">Minwei Shen</p>
+          <p class="site-description motion-element" itemprop="description"></p>
+        </div>
+        <nav class="site-state motion-element">
+        
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">7</span>
+                <span class="site-state-item-name">posts</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">2</span>
+                <span class="site-state-item-name">categories</span>
+              
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-name">tags</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#‘use-strict’"><span class="nav-number">1.</span> <span class="nav-text">‘use strict’</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Floating-Number"><span class="nav-number">2.</span> <span class="nav-text">Floating Number</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Implicit-Coercion"><span class="nav-number">3.</span> <span class="nav-text">Implicit Coercion</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Prefer-Primitives-to-Object-Wrappers"><span class="nav-number">4.</span> <span class="nav-text">Prefer Primitives to Object Wrappers</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Avoid-using-with-Mixed-Types"><span class="nav-number">5.</span> <span class="nav-text">Avoid using == with Mixed Types</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Learn-the-Limits-of-Semicolon-Insertion"><span class="nav-number">6.</span> <span class="nav-text">Learn the Limits of Semicolon Insertion</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Think-of-Strings-As-Sequences-of-16-Bit-Code-Units"><span class="nav-number">7.</span> <span class="nav-text">Think of Strings As Sequences of 16-Bit Code Units</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Minimize-Use-of-the-Global-Object"><span class="nav-number">8.</span> <span class="nav-text">Minimize Use of the Global Object</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Get-Comfortable-with-Closures"><span class="nav-number">9.</span> <span class="nav-text">Get Comfortable with Closures</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Understand-Variable-Hoisting"><span class="nav-number">10.</span> <span class="nav-text">Understand Variable Hoisting</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Beware-of-Unportable-Scoping-of-Block-Local-Function-Declarations"><span class="nav-number">11.</span> <span class="nav-text">Beware of Unportable Scoping of Block-Local Function Declarations</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Avoid-Creating-Local-Variables-with-eval"><span class="nav-number">12.</span> <span class="nav-text">Avoid Creating Local Variables with eval</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Prefer-indirect-eval-over-direct-eval"><span class="nav-number">13.</span> <span class="nav-text">Prefer indirect eval over direct eval</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Understand-the-Difference-between-Function-Method-and-Constructor-Calls"><span class="nav-number">14.</span> <span class="nav-text">Understand the Difference between Function, Method, and Constructor Calls</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Item-21-Use-apply-to-Call-Functions-with-Different-Numbers-of-Arguments"><span class="nav-number">15.</span> <span class="nav-text">Item 21: Use apply to Call Functions with Different Numbers of Arguments</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Use-a-Variable-to-Save-a-Reference-to-arguments"><span class="nav-number">16.</span> <span class="nav-text">Use a Variable to Save a Reference to arguments</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Never-modify-proto"><span class="nav-number">17.</span> <span class="nav-text">Never modify __proto__</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Make-Your-Constructors-new-Agnostic"><span class="nav-number">18.</span> <span class="nav-text">Make Your Constructors new-Agnostic</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Call-Superclass-Constructors-from-Subclass-Constructors"><span class="nav-number">19.</span> <span class="nav-text">Call Superclass Constructors from Subclass Constructors</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Use-null-Prototypes-to-Prevent-Prototype-Pollution"><span class="nav-number">20.</span> <span class="nav-text">Use null Prototypes to Prevent Prototype Pollution</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Never-Add-Enumerable-Properties-to-Object-prototype"><span class="nav-number">21.</span> <span class="nav-text">Never Add Enumerable Properties to Object.prototype</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Reuse-Generic-Array-Methods-on-Array-Like-Objects"><span class="nav-number">22.</span> <span class="nav-text">Reuse Generic Array Methods on Array-Like Objects</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Distinguish-between-Array-and-Array-Like"><span class="nav-number">23.</span> <span class="nav-text">Distinguish between Array and Array-Like</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Don’t-Block-the-Event-Queue-on-Computation"><span class="nav-number">24.</span> <span class="nav-text">Don’t Block the Event Queue on Computation</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Never-Call-Asynchronous-Callbacks-Synchronously"><span class="nav-number">25.</span> <span class="nav-text">Never Call Asynchronous Callbacks Synchronously</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Minwei Shen</span>
+</div>
+
+
+<div class="powered-by">
+  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+
+        
+
+<div class="busuanzi-count">
+
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv"><i class="fa fa-user"></i><span class="busuanzi-value" id="busuanzi_value_site_uv"></span></span>
+  
+
+  
+    <span class="site-pv"><i class="fa fa-eye"></i><span class="busuanzi-value" id="busuanzi_value_site_pv"></span></span>
+  
+  
+</div>
+
+
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.0"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+
+  
+
+    <script type="text/javascript">
+      var disqus_shortname = 'mwshen';
+      var disqus_identifier = '2017/03/01/Effective-JavaScript读书笔记/';
+
+      var disqus_title = "Effective JavaScript读书笔记";
+
+
+      function run_disqus_script(disqus_script) {
+        var dsq = document.createElement('script');
+        dsq.type = 'text/javascript';
+        dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+      }
+
+      run_disqus_script('count.js');
+
+      
+        var disqus_config = function () {
+            this.page.url = disqus_url;
+            this.page.identifier = disqus_identifier;
+            this.page.title = disqus_title;
+        };
+        run_disqus_script('embed.js');
+      
+
+    </script>
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+
+  
+  
+  
+  <link rel="stylesheet" href="/lib/algolia-instant-search/instantsearch.min.css">
+
+  
+  
+  <script src="/lib/algolia-instant-search/instantsearch.min.js"></script>
+  
+
+  <script src="/js/src/algolia-search.js?v=5.1.0"></script>
+
+
+
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+</body>
+</html>
