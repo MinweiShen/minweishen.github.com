@@ -109,7 +109,7 @@ egrep： 适合扩展的正则表达式
 fgrep： 比之前2个都快，但是不能用正则
 
 zg">
-<meta property="og:updated_time" content="2017-04-20T05:18:42.000Z">
+<meta property="og:updated_time" content="2017-04-20T05:25:24.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="命令行常用工具">
 <meta name="twitter:description" content="命令行工具，不会用虽然不是不可以，但是生产力确实大打折扣。给自己定下个小目标，每天刻意学一些，希望能帮助提高工作效率。
@@ -418,7 +418,35 @@ zg">
 </ol>
 <p>zgrep, zegrep, zfgrep分别对应上面的3中，但是可以用于压缩文件。</p>
 <p>grep的所有参数可以参考man，下面列出一些比较好用的。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div></pre></td><td class="code"><pre><div class="line"># 搜索hello</div><div class="line">grep hello example.txt</div><div class="line"></div><div class="line"># -Cnum，显示搜索结果的前后num行匹配，注意之间没有空格</div><div class="line">grep -C3 hello example.txt </div><div class="line"></div><div class="line"># -c， 显示包含匹配的行数，注意，哪怕一行中有多个匹配，也只算一行</div><div class="line">grep -c hello example.txt </div><div class="line"></div><div class="line"># -d，对directory的处理。默认是read，也可以设置skip跳过directory， 或者recurse递归。recurse的效果跟-r一样.</div><div class="line"># 在当前目录递归搜索hello</div><div class="line">grep -d recurse hello .</div><div class="line"></div><div class="line"># -e，使用正则表达式, 搜索Hello或者hello</div><div class="line">grep -e &apos;[Hh]ello&apos; example.txt</div><div class="line"></div><div class="line"># --exclude，不搜索满足匹配的文件, include与之相反</div><div class="line"># 在当前目录递归搜索hello，不搜索所有js文件</div><div class="line">grep -r --exclude \*.js hello .</div><div class="line"></div><div class="line"># --exclude-dir，不搜索directories, include-dir与之相反</div><div class="line"># 在当前目录递归搜索hello，不搜索test文件夹</div><div class="line">grep -r --exclude-dir test hello .</div><div class="line"></div><div class="line"># -i，case insensitive</div><div class="line">grep -i hello example.txt</div><div class="line"></div><div class="line"># -H，显示匹配的文件名，在搜索目录时会比较有用</div><div class="line"># 在当前目录递归搜索hello，case insensitive，输出文件名和匹配的行</div><div class="line">grep -riH hello .</div><div class="line"></div><div class="line"># -l，显示带匹配的文件名。由于只要有1个匹配就会停止，操作比较节省。-L与之相反，显示不含匹配的文件名</div><div class="line"># 在当前目录递归搜索hello, case insensitive, 只输出匹配的文件名</div><div class="line">grep -ril hello .</div><div class="line"></div><div class="line"># -n，显示行号</div><div class="line"># 在当前目录递归搜索hello，insensitive，输出文件名和行号</div><div class="line">grep -rinH hello .</div><div class="line"></div><div class="line"># -s, silent，不输出error</div><div class="line">grep -s hello example.txt</div><div class="line"></div><div class="line"># -x， 如果一整行满足匹配，才输出, 例如grep hello, 只有hello单独一行的情况才会输出</div><div class="line"># 搜索单独的一行hello</div><div class="line">grep -x hello example.txt</div><div class="line"></div><div class="line"># -v, 输出的行是不满足匹配的行</div><div class="line"># 输出不带hello的行, case insensitive</div><div class="line">grep -vi hello example.txt</div></pre></td></tr></table></figure>
+<hr>
+<p>搜索hello</p>
+<p><code>grep hello example.txt</code></p>
+<p>-Cnum，显示搜索结果的前后num行匹配，注意之间没有空格</p>
+<p><code>grep -C3 hello example.txt</code></p>
+<p>-c， 显示包含匹配的行数，注意，哪怕一行中有多个匹配，也只算一行</p>
+<p><code>grep -c hello example.txt</code></p>
+<p>-d，对directory的处理。默认是read，也可以设置skip跳过directory， 或者recurse递归。recurse的效果跟-r一样.</p>
+<p><code>grep -d recurse hello . #在当前目录递归搜索hello</code></p>
+<p>-e，使用正则表达式, 搜索Hello或者hello</p>
+<p><code>grep -e &#39;[Hh]ello&#39; example.txt</code></p>
+<p>–exclude，不搜索满足匹配的文件, include与之相反</p>
+<p><code>grep -r --exclude \*.js hello . # 在当前目录递归搜索hello，不搜索所有js文件</code></p>
+<p>–exclude-dir，不搜索directories, include-dir与之相反</p>
+<p><code>grep -r --exclude-dir test hello . # 在当前目录递归搜索hello，不搜索test文件夹</code></p>
+<p>-i，case insensitive</p>
+<p><code>grep -i hello example.txt</code></p>
+<p>-H，显示匹配的文件名，在搜索目录时会比较有用</p>
+<p><code>grep -riH hello . # 在当前目录递归搜索hello，case insensitive，输出文件名和匹配的行</code></p>
+<p>-l，显示带匹配的文件名。由于只要有1个匹配就会停止，操作比较节省。-L与之相反，显示不含匹配的文件名</p>
+<p><code>grep -ril hello .  # 在当前目录递归搜索hello, case insensitive, 只输出匹配的文件名</code></p>
+<p>-n，显示行号</p>
+<p><code>grep -rinH hello . # 在当前目录递归搜索hello，insensitive，输出文件名和行号</code></p>
+<p>-s, silent，不输出error</p>
+<p><code>grep -s hello example.txt</code></p>
+<p>-x， 如果一整行满足匹配，才输出, 例如grep hello, 只有hello单独一行的情况才会输出</p>
+<p><code>grep -x hello example.txt # 搜索单独的一行hello</code></p>
+<p>-v, 输出的行是不满足匹配的行</p>
+<p><code>grep -vi hello example.txt # 输出不带hello的行, case insensitive</code></p>
 <h1 id="curl"><a href="#curl" class="headerlink" title="curl"></a>curl</h1><h1 id="ls"><a href="#ls" class="headerlink" title="ls"></a>ls</h1><h1 id="find"><a href="#find" class="headerlink" title="find"></a>find</h1><h1 id="regular-expression"><a href="#regular-expression" class="headerlink" title="regular expression"></a>regular expression</h1>
       
     </div>
