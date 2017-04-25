@@ -2,23 +2,58 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>http://mwshen.com/2017/04/19/%E5%91%BD%E4%BB%A4%E8%A1%8C%E5%B8%B8%E7%94%A8%E5%B7%A5%E5%85%B7/</loc>
+    <loc>http://mwshen.com/2014/12/16/Enable-HiDPI-to-fix-the-blurry-fonts-on-Macbook-s-external-monitor/</loc>
     
-    <lastmod>2017-04-23T05:17:46.000Z</lastmod>
+    <lastmod>2017-04-25T06:32:38.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://mwshen.com/2016/08/04/Celery-with-test-database-matching-query-does-not-exist/</loc>
+    
+    <lastmod>2017-04-25T06:30:51.000Z</lastmod>
     
   </url>
   
   <url>
     <loc>http://mwshen.com/2017/02/16/Fluent-Python%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/</loc>
     
-    <lastmod>2017-04-23T04:25:24.000Z</lastmod>
+    <lastmod>2017-04-25T06:29:12.000Z</lastmod>
     
   </url>
   
   <url>
     <loc>http://mwshen.com/2017/03/01/Effective-JavaScript%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/</loc>
     
-    <lastmod>2017-03-06T00:32:28.000Z</lastmod>
+    <lastmod>2017-04-25T06:28:17.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://mwshen.com/2016/04/26/Python-unicode-str%E4%BB%A5%E5%8F%8A%E5%AD%97%E7%AC%A6%E7%BC%96%E7%A0%81/</loc>
+    
+    <lastmod>2017-04-25T06:23:42.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://mwshen.com/2016/04/21/Python-logger-duplicate-messages/</loc>
+    
+    <lastmod>2017-04-25T06:23:22.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://mwshen.com/2017/02/15/setTimeout%E5%88%B0%E5%BA%95%E5%81%9A%E4%BA%86%E4%BB%80%E4%B9%88/</loc>
+    
+    <lastmod>2017-04-25T06:20:01.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://mwshen.com/2017/04/19/%E5%91%BD%E4%BB%A4%E8%A1%8C%E5%B8%B8%E7%94%A8%E5%B7%A5%E5%85%B7/</loc>
+    
+    <lastmod>2017-04-24T16:39:37.000Z</lastmod>
     
   </url>
   
@@ -33,20 +68,6 @@
     <loc>http://mwshen.com/2017/02/27/%E8%A7%A3%E8%80%A6%E4%BD%A0%E7%9A%84%E6%95%B0%E6%8D%AE/</loc>
     
     <lastmod>2017-02-28T05:55:14.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://mwshen.com/2017/02/15/setTimeout%E5%88%B0%E5%BA%95%E5%81%9A%E4%BA%86%E4%BB%80%E4%B9%88/</loc>
-    
-    <lastmod>2017-02-16T22:33:40.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://mwshen.com/2016/04/26/Python-unicode-str%E4%BB%A5%E5%8F%8A%E5%AD%97%E7%AC%A6%E7%BC%96%E7%A0%81/</loc>
-    
-    <lastmod>2017-02-12T20:07:25.000Z</lastmod>
     
   </url>
   

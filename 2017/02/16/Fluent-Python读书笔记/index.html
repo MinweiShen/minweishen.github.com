@@ -87,19 +87,19 @@
 
 
 
-<meta name="description" content="Chapter 1: The Python Data ModelPython的数据模型可以理解为一些实现了特殊方法的对象。这些特殊方法一般是xxx的形式(行话叫dunder method)。Python通过调用这些特殊函数，实现了一系列的操作。
-例如，obj[key]方法实际是obj.__getitem(key)的调用(dunder getitem)。">
+<meta name="description" content="Chapter 1: The Python Data ModelPython的数据模型可以理解为一些实现了特殊方法的对象。这些特殊方法一般是__xxx__的形式(行话叫dunder method)。Python通过调用这些特殊函数，实现了一系列的操作。
+例如，obj[key]方法实际是obj.__getitem__(key)的调用(dunder getitem)。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Fluent Python读书笔记">
 <meta property="og:url" content="http://mwshen.com/2017/02/16/Fluent-Python读书笔记/index.html">
 <meta property="og:site_name" content="放假的电话">
-<meta property="og:description" content="Chapter 1: The Python Data ModelPython的数据模型可以理解为一些实现了特殊方法的对象。这些特殊方法一般是xxx的形式(行话叫dunder method)。Python通过调用这些特殊函数，实现了一系列的操作。
-例如，obj[key]方法实际是obj.__getitem(key)的调用(dunder getitem)。">
-<meta property="og:updated_time" content="2017-04-23T04:25:24.000Z">
+<meta property="og:description" content="Chapter 1: The Python Data ModelPython的数据模型可以理解为一些实现了特殊方法的对象。这些特殊方法一般是__xxx__的形式(行话叫dunder method)。Python通过调用这些特殊函数，实现了一系列的操作。
+例如，obj[key]方法实际是obj.__getitem__(key)的调用(dunder getitem)。">
+<meta property="og:updated_time" content="2017-04-25T06:29:12.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Fluent Python读书笔记">
-<meta name="twitter:description" content="Chapter 1: The Python Data ModelPython的数据模型可以理解为一些实现了特殊方法的对象。这些特殊方法一般是xxx的形式(行话叫dunder method)。Python通过调用这些特殊函数，实现了一系列的操作。
-例如，obj[key]方法实际是obj.__getitem(key)的调用(dunder getitem)。">
+<meta name="twitter:description" content="Chapter 1: The Python Data ModelPython的数据模型可以理解为一些实现了特殊方法的对象。这些特殊方法一般是__xxx__的形式(行话叫dunder method)。Python通过调用这些特殊函数，实现了一系列的操作。
+例如，obj[key]方法实际是obj.__getitem__(key)的调用(dunder getitem)。">
 
 
 
@@ -387,18 +387,18 @@
       
 
       
-        <h1 id="Chapter-1-The-Python-Data-Model"><a href="#Chapter-1-The-Python-Data-Model" class="headerlink" title="Chapter 1: The Python Data Model"></a>Chapter 1: The Python Data Model</h1><p>Python的数据模型可以理解为一些实现了特殊方法的对象。这些特殊方法一般是<strong>xxx</strong>的形式(行话叫dunder method)。Python通过调用这些特殊函数，实现了一系列的操作。</p>
-<p>例如，obj[key]方法实际是obj.__getitem<strong>(key)的调用(dunder getitem)。<br><a id="more"></a><br>实现了</strong>getitem__方法的对象obj,可以进行如下面的操作：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">for</span> item <span class="keyword">in</span> obj:</div><div class="line">    <span class="keyword">pass</span></div><div class="line"></div><div class="line">a = item[:<span class="number">3</span>]</div></pre></td></tr></table></figure></p>
+        <h1 id="Chapter-1-The-Python-Data-Model"><a href="#Chapter-1-The-Python-Data-Model" class="headerlink" title="Chapter 1: The Python Data Model"></a>Chapter 1: The Python Data Model</h1><p>Python的数据模型可以理解为一些实现了特殊方法的对象。这些特殊方法一般是__xxx__的形式(行话叫dunder method)。Python通过调用这些特殊函数，实现了一系列的操作。</p>
+<p>例如，obj[key]方法实际是obj.__getitem__(key)的调用(dunder getitem)。<br><a id="more"></a><br>实现了__getitem__方法的对象obj,可以进行如下面的操作：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">for</span> item <span class="keyword">in</span> obj:</div><div class="line">    <span class="keyword">pass</span></div><div class="line"></div><div class="line">a = item[:<span class="number">3</span>]</div></pre></td></tr></table></figure></p>
 <hr>
-<p><em>内置方法的调用并不一定是明确的</em></p>
-<p>对于内置的数据类型如list，str， len()方法并不是调用<strong>len</strong>方法，而是读取CPython实现PyVarObject C 结构里的的ob_size，这样比较快。</p>
+<p>内置方法的调用并不一定是明确的。</p>
+<p>对于内置的数据类型如list，str， len()方法并不是调用__len__方法，而是读取CPython实现PyVarObject C 结构里的的ob_size，这样比较快。</p>
 <p>对于<code>for i in x</code>，实际调用的是iter(x),而后者又会调用x.__iter__(),如果定义了的话。</p>
 <h2 id="内置方法"><a href="#内置方法" class="headerlink" title="内置方法"></a>内置方法</h2><ol>
 <li><code>__len__</code>: len()调用</li>
 <li><code>__getitem__</code>: obj[idx], obj[key], for _ in obj等等</li>
-<li><code>__repr__</code>: is called by the repr built-in to get the string represen‐ tation of the object for inspection. The string returned by <strong>repr</strong> should be unambiguous and, if possible, match the source code necessary to re-create the object being represented.</li>
+<li><code>__repr__</code>: is called by the repr built-in to get the string represen‐ tation of the object for inspection. The string returned by __repr__ should be unambiguous and, if possible, match the source code necessary to re-create the object being represented.</li>
 <li><code>__str__</code>: print以及str()调用，跟<code>__repr__</code>区别微妙。<a href="http://stackoverflow.com/questions/1436703/difference-between-str-and-repr-in-python" target="_blank" rel="external">Difference between __str<strong> and __repr</strong></a></li>
-<li><code>__bool__</code>: bool(x) or <code>if x</code>. 如果 <code>__bool__</code> 没有实现，那么会试图调用x.<strong>len</strong>(),非0则返回True</li>
+<li><code>__bool__</code>: bool(x) or <code>if x</code>. 如果 <code>__bool__</code> 没有实现，那么会试图调用x.__len__(),非0则返回True</li>
 </ol>
 <p>更多见书39页。</p>
 <h1 id="Chapter-2-An-Array-of-Sequences"><a href="#Chapter-2-An-Array-of-Sequences" class="headerlink" title="Chapter 2: An Array of Sequences"></a>Chapter 2: An Array of Sequences</h1><p>Python有2种内置的sequence类型：</p>
@@ -408,7 +408,7 @@
 </ol>
 <h2 id="List-comprehensions-and-Generator-Expressions"><a href="#List-comprehensions-and-Generator-Expressions" class="headerlink" title="List comprehensions and Generator Expressions"></a>List comprehensions and Generator Expressions</h2><p>在python2里，listcomps的变量有可能会leak,在python3里，这个问题被修复了，现在它们有自己的local作用域。<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">x = <span class="string">'hello'</span></div><div class="line">l = [x <span class="keyword">for</span> x <span class="keyword">in</span> <span class="string">'ABC'</span>]</div><div class="line"><span class="keyword">print</span> x  <span class="comment"># 'C'</span></div></pre></td></tr></table></figure></p>
 <p>Generator expression跟list comprehension很接近，区别是放在<code>()</code>里。Genexp并不会生成完整的list，而是用yield产生每个值，所以比较节省空间。</p>
-<h2 id="Tuples-Are-Not-Just-Immutable-Lists"><a href="#Tuples-Are-Not-Just-Immutable-Lists" class="headerlink" title="Tuples Are Not Just Immutable Lists"></a>Tuples Are Not Just Immutable Lists</h2><p>Using * to grab excess items when unpacking tuples:<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span>a, b, *rest = range(<span class="number">5</span>)</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>a, b, rest</div><div class="line">(<span class="number">0</span>, <span class="number">1</span>, [<span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>])</div></pre></td></tr></table></figure></p>
+<h2 id="Tuples-Are-Not-Just-Immutable-Lists"><a href="#Tuples-Are-Not-Just-Immutable-Lists" class="headerlink" title="Tuples Are Not Just Immutable Lists"></a>Tuples Are Not Just Immutable Lists</h2><p>Using <code>*</code> to grab excess items when unpacking tuples:<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span>a, b, *rest = range(<span class="number">5</span>)</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>a, b, rest</div><div class="line">(<span class="number">0</span>, <span class="number">1</span>, [<span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>])</div></pre></td></tr></table></figure></p>
 <h2 id="namedtuple"><a href="#namedtuple" class="headerlink" title="namedtuple"></a>namedtuple</h2><p>namedtuple有比常规的class占用空间小，三个非常有用的方法：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">City = namedtuple(<span class="string">'City'</span>, <span class="string">'name state'</span>)</div><div class="line">City._fileds</div><div class="line">foster_city = City._make((<span class="string">'Foster City'</span>, <span class="string">'CA'</span>))</div><div class="line">foster_city._asdict()</div></pre></td></tr></table></figure></p>
 <h2 id="slice"><a href="#slice" class="headerlink" title="slice"></a>slice</h2><p>slice调用了seq.__getitem__(slice(start, stop, step))，因此，可以命名slice，使得代码更可读。例如:<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">s = <span class="string">'hello world'</span></div><div class="line">hello = slice(<span class="number">0</span>, <span class="number">5</span>)</div><div class="line">world = slice(<span class="number">6</span>, <span class="number">11</span>)</div><div class="line"><span class="keyword">print</span> s[hello], s[world]</div></pre></td></tr></table></figure></p>
 <h2 id="using-with-sequences"><a href="#using-with-sequences" class="headerlink" title="using += with sequences"></a>using += with sequences</h2><p>+=调用了__iadd<strong>(in-place addition)。因此，在sequence上使用+=时，会修改当前的sequence。但是，如果是一个immutable的sequence，如tuple，它并没有实现__iadd</strong>方法，那么调用a += b相当于a = a + b。看似还是a在变，实际发生的是完全不同的事，a的id会变化。</p>
@@ -636,7 +636,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">8</span>
+                <span class="site-state-item-count">11</span>
                 <span class="site-state-item-name">posts</span>
               </a>
             </div>

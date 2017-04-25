@@ -71,7 +71,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="JS," />
+  <meta name="keywords" content="Python," />
 
 
 
@@ -87,19 +87,16 @@
 
 
 
-<meta name="description" content="对很多人来说，Javascript的单线程以及事件驱动，即使不是了解得非常透彻，但也绝对不会没听说过。setTimeout，更是在提到这2个概念时，经常会举到的例子。关于Javascript单线程的文章，网上一搜一大把，对我自己来说，可能没有什么写的意义。直到有一天，我知道了setTimeout(handler, 0)这个用法，觉得单单写一写setTimeout，似乎倒是个挺有意思的事情。
-set">
+<meta name="description" content="In a recent project, I used Django with Celery. When testing, I ran into some problem and it took me a while to solve. Hope this can help you a bit if you see the same thing.">
 <meta property="og:type" content="article">
-<meta property="og:title" content="setTimeout到底做了什么">
-<meta property="og:url" content="http://mwshen.com/2017/02/15/setTimeout到底做了什么/index.html">
+<meta property="og:title" content="Celery with test database: matching query does not exist">
+<meta property="og:url" content="http://mwshen.com/2016/08/04/Celery-with-test-database-matching-query-does-not-exist/index.html">
 <meta property="og:site_name" content="放假的电话">
-<meta property="og:description" content="对很多人来说，Javascript的单线程以及事件驱动，即使不是了解得非常透彻，但也绝对不会没听说过。setTimeout，更是在提到这2个概念时，经常会举到的例子。关于Javascript单线程的文章，网上一搜一大把，对我自己来说，可能没有什么写的意义。直到有一天，我知道了setTimeout(handler, 0)这个用法，觉得单单写一写setTimeout，似乎倒是个挺有意思的事情。
-set">
-<meta property="og:updated_time" content="2017-04-25T06:20:01.000Z">
+<meta property="og:description" content="In a recent project, I used Django with Celery. When testing, I ran into some problem and it took me a while to solve. Hope this can help you a bit if you see the same thing.">
+<meta property="og:updated_time" content="2017-04-25T06:30:51.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="setTimeout到底做了什么">
-<meta name="twitter:description" content="对很多人来说，Javascript的单线程以及事件驱动，即使不是了解得非常透彻，但也绝对不会没听说过。setTimeout，更是在提到这2个概念时，经常会举到的例子。关于Javascript单线程的文章，网上一搜一大把，对我自己来说，可能没有什么写的意义。直到有一天，我知道了setTimeout(handler, 0)这个用法，觉得单单写一写setTimeout，似乎倒是个挺有意思的事情。
-set">
+<meta name="twitter:title" content="Celery with test database: matching query does not exist">
+<meta name="twitter:description" content="In a recent project, I used Django with Celery. When testing, I ran into some problem and it took me a while to solve. Hope this can help you a bit if you see the same thing.">
 
 
 
@@ -127,13 +124,13 @@ set">
 
 
 
-  <link rel="canonical" href="http://mwshen.com/2017/02/15/setTimeout到底做了什么/"/>
+  <link rel="canonical" href="http://mwshen.com/2016/08/04/Celery-with-test-database-matching-query-does-not-exist/"/>
 
 
 
 
 
-  <title> setTimeout到底做了什么 | 放假的电话 </title>
+  <title> Celery with test database: matching query does not exist | 放假的电话 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="en">
@@ -297,7 +294,7 @@ set">
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://mwshen.com/2017/02/15/setTimeout到底做了什么/">
+  <link itemprop="mainEntityOfPage" href="http://mwshen.com/2016/08/04/Celery-with-test-database-matching-query-does-not-exist/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="Minwei Shen">
@@ -321,7 +318,7 @@ set">
             
             
               
-                setTimeout到底做了什么
+                Celery with test database: matching query does not exist
               
             
           </h2>
@@ -336,8 +333,8 @@ set">
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-02-15T21:23:47-08:00">
-                2017-02-15
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-08-04T16:33:41-07:00">
+                2016-08-04
               </time>
             
 
@@ -355,8 +352,8 @@ set">
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2017/02/15/setTimeout到底做了什么/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2017/02/15/setTimeout到底做了什么/" itemprop="commentCount"></span>
+                <a href="/2016/08/04/Celery-with-test-database-matching-query-does-not-exist/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2016/08/04/Celery-with-test-database-matching-query-does-not-exist/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -387,25 +384,11 @@ set">
       
 
       
-        <p>对很多人来说，Javascript的单线程以及事件驱动，即使不是了解得非常透彻，但也绝对不会没听说过。setTimeout，更是在提到这2个概念时，经常会举到的例子。关于Javascript单线程的文章，网上一搜一大把，对我自己来说，可能没有什么写的意义。直到有一天，我知道了<code>setTimeout(handler, 0)</code>这个用法，觉得单单写一写<code>setTimeout</code>，似乎倒是个挺有意思的事情。</p>
-<p><code>setTimeout</code>最简单的用法，就像下面一样：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">setTimeout(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">'Hello World'</span>);</div><div class="line">&#125;, <span class="number">1000</span>);</div></pre></td></tr></table></figure></p>
-<p>这段代码会在 <em>大约</em> 1秒钟之后打印出<code>Hello World</code>。这里，之所以会用到 <em>大约</em> 2个字，是因为setTimeout所设置的时间并不是精确的，而是一个最小的等待时间。在上面的例子里，由于没有其它的任务在执行，输出<code>Hello World</code>的时间会非常接近1秒。但是，如果当前浏览器正在执行非常耗时Javascript代码，输出<code>Hello World</code>的时间可能会远远大于1秒。</p>
-<p>在看过上面的例子后，再看下面的代码<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">setTimeout(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">'t1'</span>);</div><div class="line">&#125;, <span class="number">100</span>)</div><div class="line"></div><div class="line">setTimeout(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">'t2'</span>);</div><div class="line">&#125;, <span class="number">200</span>)</div><div class="line"></div><div class="line"><span class="keyword">var</span> loopLength = <span class="number">1000</span>;</div><div class="line"><span class="keyword">for</span>(<span class="keyword">var</span> i=<span class="number">0</span>; i&lt; loopLength; i++) &#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="number">1</span>);</div><div class="line">&#125;</div><div class="line"></div><div class="line">setTimeout(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">'t3'</span>);</div><div class="line">&#125;, <span class="number">50</span>)</div></pre></td></tr></table></figure></p>
-<p>这些代码最后会输出什么呢？根据setTimeout设置的时间，似乎比较合理的是<code>t3 t1 t2</code>。但是，实际输出的结果，有可能是<code>t1 t2 t3</code>, <code>t3 t1 t2</code>或者<code>t1 t3 t2</code>!</p>
-<p>对结果产生影响的，就是其中的那个for循环。根据loopLength设置的不同，for循环会执行不同的时间。由于Javascript是单线程的，在执行这个for循环的时候，没有办法正确响应这些setTimeout函数，导致了输出的不同。这里，就牵涉到一个问题，就是setTimeout到底干了什么？</p>
-<p>根据<a href="https://html.spec.whatwg.org/multipage/webappapis.html#dom-settimeout" target="_blank" rel="external">HTML的定义规范</a>，setTimeout实际会产生一个定时器，并会把这个定时器加入到一个由浏览器维护的队列里。在浏览器空闲的时候，它会检查这个定时器的队列，如果发现有某个定时器已经到了指定的等待时间，就会把相应的函数再加入Javascript的事件队列里。所谓的事件队列，就是一个由事件以及其对应的处理函数(handler)所构成的队列。</p>
-<p>回到上面的例子</p>
-<ol>
-<li>假设for循环执行的时间小于50ms，那么浏览器有足够的时间处理3个setTimeout函数，输出的便是<code>t3 t1 t2</code>。</li>
-<li>如果for循环的时间在50ms到100ms之间，那么在执行完代码后，由于第三个setTimeout已经满足了至少50ms的等待时间，会第一个输出，最后输出的结果也是<code>t3 t1 t2</code>。</li>
-<li>如果for循环时间在100ms到200ms之间，在执行完for循环后，第一个setTimeout已经满足了最小延迟的时间，会第一个输出，最后结果是<code>`t1 t3 t2</code>。</li>
-<li>如果for循环的时间大于200ms,那么执行完时，3个setTimeout都已经满足了最小等待时间，最后输出的结果是<code>t1 t2 t3</code></li>
-</ol>
-<p>上面的4点，如果仔细看的话，会发现其实有一个前提，就是先加入队列的定时器如果时间到了，会先被取出来加入时间队列。之前也提到了，浏览器会维护这个定时器的队列，但并没有规定说一定是一个先进先出的队列。怎么才能知道浏览器到底是怎么执行的呢？下面这段代码可以试着找出浏览器处理定时器队列的方法：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">setTimeout(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">'t1'</span>);</div><div class="line">&#125;, <span class="number">100</span>)</div><div class="line"></div><div class="line">setTimeout(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">'t2'</span>);</div><div class="line">&#125;, <span class="number">100</span>)</div></pre></td></tr></table></figure></p>
-<p>设定2个同样延时的定时器，会发现，在所有的浏览器里，都会输出<code>t1 t2</code>。可见，浏览器在维护定时器队列的时候，是先进先出的，这也比较符合直觉。</p>
-<p>最后，再来看看<code>setTimeout(handler, 0)</code>这个用法，例如：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">setTimeout(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">'finish'</span>);</div><div class="line">&#125;, <span class="number">0</span>);</div><div class="line"></div><div class="line"><span class="keyword">for</span> ( ... ) &#123;</div><div class="line">    ....</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>有了之前的知识，可以知道，上面的代码，可以保证会在for循环后立即输出<code>finish</code>。执行的过程就是生成一个定时器，加入定时器队列。在浏览器忙于执行for循环的时候，并不会检查这个队列，直到执行完，会立即把定时器加入事件队列并处理，输出<code>finish</code>。</p>
-<p>题外话，即使定义了0延迟，其实也有一个规定的最小延迟<a href="https://developer.mozilla.org/en-US/docs/Web/API/WindowOrWorkerGlobalScope/setTimeout#Nested_timeouts_forced_to_&gt;4ms" target="_blank" rel="external">4ms</a>。在统一成4ms之前，最小的延迟是10ms。</p>
+        <p>In a recent project, I used Django with Celery. When testing, I ran into some problem and it took me a while to solve. Hope this can help you a bit if you see the same thing.<br><a id="more"></a><br>In my project, I tried to use Celery to send email. Meanwhile, I have some model called EmailLog to track the emails. Part of the code is like this:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@shared_task</span></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">_send_email</span><span class="params">(subject, to, email_log_pk)</span>:</span></div><div class="line">    email = EmailMessage()</div><div class="line">    email_log = EmailLog.objects.get(pk=email_log_pk)</div><div class="line"></div><div class="line">    <span class="keyword">try</span>:</div><div class="line">        email.send()</div><div class="line">        email_log.status = <span class="string">'Sent'</span></div><div class="line">    <span class="keyword">except</span>:</div><div class="line">        email_log.status = <span class="string">'Failed'</span></div><div class="line">    <span class="keyword">finally</span>:</div><div class="line">        email_log.save()</div><div class="line"></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">send_my_email</span><span class="params">(subject, to)</span>:</span></div><div class="line">    email_log = EmailLog(status=<span class="string">'Pending'</span>)</div><div class="line">    email_log.save()</div><div class="line"></div><div class="line">    <span class="keyword">print</span> email_log</div><div class="line"></div><div class="line">    _send_email.delay(subject, to, email_log.pk)</div><div class="line"></div><div class="line">    <span class="keyword">print</span> email_log</div></pre></td></tr></table></figure>
+<p>In my <code>send_my_email</code> function, I created an EmailLog object, saved it first and then send the email using Celery. In the Celery task, the email_log’s status will be updated. The two print statements ensure that <code>email_log</code> is actually in the database.</p>
+<p>While running unittest, however, my Celery worker can’t find the saved EmailLog object, saying ‘matching query does not exist’. It seems that the tests are wrapped in some transaction and even if both Django and Celery are configured to use the same database, they can’t share data.</p>
+<p>Finally, I set <code>CELERY_ALWAYS_EAGER=True</code> to bypass this problem. It will execute the task locally, not in the queue. At least it can verify the correctness of the function.</p>
 
       
     </div>
@@ -429,7 +412,7 @@ set">
       
         <div class="post-tags">
           
-            <a href="/tags/JS/" rel="tag"># JS</a>
+            <a href="/tags/Python/" rel="tag"># Python</a>
           
         </div>
       
@@ -442,8 +425,8 @@ set">
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/08/04/Celery-with-test-database-matching-query-does-not-exist/" rel="next" title="Celery with test database: matching query does not exist">
-                <i class="fa fa-chevron-left"></i> Celery with test database: matching query does not exist
+              <a href="/2016/04/26/Python-unicode-str以及字符编码/" rel="next" title="Python unicode, str以及字符编码">
+                <i class="fa fa-chevron-left"></i> Python unicode, str以及字符编码
               </a>
             
           </div>
@@ -452,8 +435,8 @@ set">
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2017/02/16/Fluent-Python读书笔记/" rel="prev" title="Fluent Python读书笔记">
-                Fluent Python读书笔记 <i class="fa fa-chevron-right"></i>
+              <a href="/2017/02/15/setTimeout到底做了什么/" rel="prev" title="setTimeout到底做了什么">
+                setTimeout到底做了什么 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -707,9 +690,9 @@ set">
 
     <script type="text/javascript">
       var disqus_shortname = 'mwshen';
-      var disqus_identifier = '2017/02/15/setTimeout到底做了什么/';
+      var disqus_identifier = '2016/08/04/Celery-with-test-database-matching-query-does-not-exist/';
 
-      var disqus_title = "setTimeout到底做了什么";
+      var disqus_title = "Celery with test database: matching query does not exist";
 
 
       function run_disqus_script(disqus_script) {

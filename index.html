@@ -938,8 +938,8 @@ grep： 适合基本的
 
       
         
-          <h1 id="Chapter-1-The-Python-Data-Model"><a href="#Chapter-1-The-Python-Data-Model" class="headerlink" title="Chapter 1: The Python Data Model"></a>Chapter 1: The Python Data Model</h1><p>Python的数据模型可以理解为一些实现了特殊方法的对象。这些特殊方法一般是<strong>xxx</strong>的形式(行话叫dunder method)。Python通过调用这些特殊函数，实现了一系列的操作。</p>
-<p>例如，obj[key]方法实际是obj.__getitem<strong>(key)的调用(dunder getitem)。<br>
+          <h1 id="Chapter-1-The-Python-Data-Model"><a href="#Chapter-1-The-Python-Data-Model" class="headerlink" title="Chapter 1: The Python Data Model"></a>Chapter 1: The Python Data Model</h1><p>Python的数据模型可以理解为一些实现了特殊方法的对象。这些特殊方法一般是__xxx__的形式(行话叫dunder method)。Python通过调用这些特殊函数，实现了一系列的操作。</p>
+<p>例如，obj[key]方法实际是obj.__getitem__(key)的调用(dunder getitem)。<br>
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2017/02/16/Fluent-Python读书笔记/#more" rel="contents">
@@ -1074,10 +1074,147 @@ grep： 适合基本的
 
       
         
-          <p>对很多人来说，Javascript的单线程以及事件驱动，即使不是了解得非常透彻，但也绝对不会没听说过。setTimeout，更是在提到这2个概念时，经常会举到的例子。关于Javascript单线程的文章，网上一搜一大把，对我自己来说，可能没有什么写的意义。直到有一天，我知道了<code>setTimeout(handler, 0)</code>这个用法，觉得单单写一写<code>setTimeout</code>，似乎倒是个挺有意思的事情。<br>
+          
+          对很多人来说，Javascript的单线程以及事件驱动，即使不是了解得非常透彻，但也绝对不会没听说过。setTimeout，更是在提到这2个概念时，经常会举到的例子。关于Javascript单线程的文章，网上一搜一大把，对我自己来说，可能没有什么写的意义。直到有一天，我知道了setTimeout(h
+          ...
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2017/02/15/setTimeout到底做了什么/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://mwshen.com/2016/08/04/Celery-with-test-database-matching-query-does-not-exist/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="Minwei Shen">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/images/avatar.jpg">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="放假的电话">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="放假的电话" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/08/04/Celery-with-test-database-matching-query-does-not-exist/" itemprop="url">
+                  Celery with test database: matching query does not exist
+                </a>
+              
+            
+          </h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-08-04T16:33:41-07:00">
+                2016-08-04
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2016/08/04/Celery-with-test-database-matching-query-does-not-exist/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2016/08/04/Celery-with-test-database-matching-query-does-not-exist/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p>In a recent project, I used Django with Celery. When testing, I ran into some problem and it took me a while to solve. Hope this can help you a bit if you see the same thing.<br>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2016/08/04/Celery-with-test-database-matching-query-does-not-exist/#more" rel="contents">
               Read more &raquo;
             </a>
           </div>
@@ -1383,9 +1520,151 @@ grep： 适合基本的
 
 
     
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://mwshen.com/2016/04/21/Python-logger-duplicate-messages/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="Minwei Shen">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/images/avatar.jpg">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="放假的电话">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="放假的电话" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/04/21/Python-logger-duplicate-messages/" itemprop="url">
+                  Python logger duplicate messages
+                </a>
+              
+            
+          </h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-04-21T10:15:56-07:00">
+                2016-04-21
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2016/04/21/Python-logger-duplicate-messages/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2016/04/21/Python-logger-duplicate-messages/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+          
+刚刚接手公司的测试代码的时候，遇到一个很奇怪的问题。现有的测试代码在运行多个测试用例的时候，会输出很多重复的信息，重复次数跟运行的测试数有关。比如，运行第三个测试的时候，同样的信息会输出3次，而运行第四个测试的时候，同样的信息会输出4次。测试代码是用Python写的，显然问题跟python的log
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2016/04/21/Python-logger-duplicate-messages/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
   </section>
 
   
+  <nav class="pagination">
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
+  </nav>
+
 
 
           </div>
@@ -1426,7 +1705,7 @@ grep： 适合基本的
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">8</span>
+                <span class="site-state-item-count">11</span>
                 <span class="site-state-item-name">posts</span>
               </a>
             </div>
