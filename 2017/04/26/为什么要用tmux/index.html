@@ -87,22 +87,19 @@
 
 
 
-<meta name="description" content="说来尴尬，以前一直不知道原来directory是需要x权限的，也就是说，当执行ls -l命令的时候，文件夹一般会显示’drwxr-xr-x’。一次，因为非常脑残的原因，把/private目录的权限设置成了’drwxr–r–’，导致macbook完全无法正常开机，一开机就白苹果。幸好，经过一段时间的google，解决了问题，特记录之。
-
-开机，按住commnd+s,进入single user mod">
+<meta name="description" content="讲tmux配置、优化的太多了，这里不再赘述。在配置之前，一个关键的问题就是，我为什么要用tmux？其实之前就看过跟tmux相关的文章、教程，但是都没有往心里去。当时简单地以为tmux就是一个把terminal窗口分成不同pane的工具。你说我iterm2有快捷键，把窗口分分pane，开开新window、新tab，不是简简单单的事情，我要搞个tmux么？快捷键还那么复杂。
+就是因为这个原因，或者说我">
 <meta property="og:type" content="article">
-<meta property="og:title" content="记一次尴尬的mac问题解决">
-<meta property="og:url" content="http://mwshen.com/2016/04/24/记一次尴尬的mac问题解决/index.html">
+<meta property="og:title" content="为什么要用tmux">
+<meta property="og:url" content="http://mwshen.com/2017/04/26/为什么要用tmux/index.html">
 <meta property="og:site_name" content="放假的电话">
-<meta property="og:description" content="说来尴尬，以前一直不知道原来directory是需要x权限的，也就是说，当执行ls -l命令的时候，文件夹一般会显示’drwxr-xr-x’。一次，因为非常脑残的原因，把/private目录的权限设置成了’drwxr–r–’，导致macbook完全无法正常开机，一开机就白苹果。幸好，经过一段时间的google，解决了问题，特记录之。
-
-开机，按住commnd+s,进入single user mod">
-<meta property="og:updated_time" content="2017-02-11T20:19:05.000Z">
+<meta property="og:description" content="讲tmux配置、优化的太多了，这里不再赘述。在配置之前，一个关键的问题就是，我为什么要用tmux？其实之前就看过跟tmux相关的文章、教程，但是都没有往心里去。当时简单地以为tmux就是一个把terminal窗口分成不同pane的工具。你说我iterm2有快捷键，把窗口分分pane，开开新window、新tab，不是简简单单的事情，我要搞个tmux么？快捷键还那么复杂。
+就是因为这个原因，或者说我">
+<meta property="og:updated_time" content="2017-04-27T07:32:07.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="记一次尴尬的mac问题解决">
-<meta name="twitter:description" content="说来尴尬，以前一直不知道原来directory是需要x权限的，也就是说，当执行ls -l命令的时候，文件夹一般会显示’drwxr-xr-x’。一次，因为非常脑残的原因，把/private目录的权限设置成了’drwxr–r–’，导致macbook完全无法正常开机，一开机就白苹果。幸好，经过一段时间的google，解决了问题，特记录之。
-
-开机，按住commnd+s,进入single user mod">
+<meta name="twitter:title" content="为什么要用tmux">
+<meta name="twitter:description" content="讲tmux配置、优化的太多了，这里不再赘述。在配置之前，一个关键的问题就是，我为什么要用tmux？其实之前就看过跟tmux相关的文章、教程，但是都没有往心里去。当时简单地以为tmux就是一个把terminal窗口分成不同pane的工具。你说我iterm2有快捷键，把窗口分分pane，开开新window、新tab，不是简简单单的事情，我要搞个tmux么？快捷键还那么复杂。
+就是因为这个原因，或者说我">
 
 
 
@@ -130,13 +127,13 @@
 
 
 
-  <link rel="canonical" href="http://mwshen.com/2016/04/24/记一次尴尬的mac问题解决/"/>
+  <link rel="canonical" href="http://mwshen.com/2017/04/26/为什么要用tmux/"/>
 
 
 
 
 
-  <title> 记一次尴尬的mac问题解决 | 放假的电话 </title>
+  <title> 为什么要用tmux | 放假的电话 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="en">
@@ -300,7 +297,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://mwshen.com/2016/04/24/记一次尴尬的mac问题解决/">
+  <link itemprop="mainEntityOfPage" href="http://mwshen.com/2017/04/26/为什么要用tmux/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="Minwei Shen">
@@ -324,7 +321,7 @@
             
             
               
-                记一次尴尬的mac问题解决
+                为什么要用tmux
               
             
           </h2>
@@ -339,8 +336,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-04-24T19:36:38-07:00">
-                2016-04-24
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-04-26T13:30:27-07:00">
+                2017-04-26
               </time>
             
 
@@ -358,8 +355,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2016/04/24/记一次尴尬的mac问题解决/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2016/04/24/记一次尴尬的mac问题解决/" itemprop="commentCount"></span>
+                <a href="/2017/04/26/为什么要用tmux/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2017/04/26/为什么要用tmux/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -390,14 +387,19 @@
       
 
       
-        <p>说来尴尬，以前一直不知道原来directory是需要x权限的，也就是说，当执行<code>ls -l</code>命令的时候，文件夹一般会显示’drwxr-xr-x’。一次，因为非常脑残的原因，把/private目录的权限设置成了’drwxr–r–’，导致macbook完全无法正常开机，一开机就白苹果。幸好，经过一段时间的google，解决了问题，特记录之。</p>
-<ol>
-<li>开机，按住commnd+s,进入<a href="https://support.apple.com/en-us/HT201573" target="_blank" rel="external">single user mode</a></li>
-<li>此时，你只有只读权限。通过<code>mount -o /</code>命令，获得根目录的写权限</li>
-<li>之后， 用<code>chmod</code>命令，就可以顺利修改文件夹权限</li>
-<li>重启，问题解决</li>
-</ol>
-<p>题外话，如果用这招对付电脑小白，很凶狠，后果自负啊。</p>
+        <p>讲tmux配置、优化的太多了，这里不再赘述。在配置之前，一个关键的问题就是，我为什么要用tmux？其实之前就看过跟tmux相关的文章、教程，但是都没有往心里去。当时简单地以为tmux就是一个把terminal窗口分成不同pane的工具。你说我iterm2有快捷键，把窗口分分pane，开开新window、新tab，不是简简单单的事情，我要搞个tmux么？快捷键还那么复杂。</p>
+<p>就是因为这个原因，或者说我平时对terminal的简单应用，让我忽略了tmux。直到最近由于看production机器上的log文件实在是太麻烦了，我才又想到了tmux。这次仔细看看tmux，才发现它很好地解决了我的痛点。</p>
+<p>举一个最简单的🌰：如果一台server上我有3个log文件要看，我怎么办？我先ssh上去，打开一个文件。然后，split一下iterm2的窗口，变成3个pane。蛋疼的是，即使一开始ssh过了，新的pane也需要再次ssh。这么一来，就多了2步ssh的操作。虽然说不是很麻烦，还能接受，但是production里的机器可不止一台，要看所有log，需要ssh多少次？而且，每次ssh上去，我还得找到要看的log文件打开，也要打不少字。</p>
+<p>这里，tmux就能帮上不少忙。首先，tmux是可以在server上安装的，我ssh到server上，输入tmux，进入一个新的tmux session，之后，再分若干个pane出来，是不需要重新ssh的。每个pane里，我可以再打开自己需要看的文件。跟上面的痛点相比，减少了我需要ssh的次数。</p>
+<p>其次，不得不提一下tmux最重要的特性：<code>session</code>。session可以保存命令的执行状况，简单得说，每个session相当于一个独立的terminal进程，并且是可以保存、放入后台并且之后重新连接的。</p>
+<p>刚才说过每次在server上打开好几个log文件也是件很麻烦的事情。不过有了tmux，我第一次在tmux的session里打开了那些文件后，要做的就是detach这个session（退出，而不是把session kill掉）。那么下次再ssh到这个server时，就可以重新attach到这个session上，一步操作，恢复之前打开的所有文件！</p>
+<p>有了tmux，我查看log的操作被大大简化了。原来3个server，每个server上3个log文件，我需要把iterm2分成9个pane，ssh9次，打开文件9次。现在，我只要第一次在每个server上开一个tmux的seesion并打开3个log文件，之后，我只要把iterm2分成3个pane，ssh3次，attach 3次到3个之前保留的session上，就能看到9个文件了！27-&gt;9，整整少了18个操作！</p>
+<p>9个操作已经不多了，但是我要的是更加方便！这个愿望，可以通过<a href="https://github.com/tmuxinator/tmuxinator" target="_blank" rel="external">tmuxinator</a>这个大杀器实现！tmuxinator是一个tmux session的管理工具。简单得说，我可以通过配置文件，配置一个tmux session的模板，包括window，每个window里的pane，pane的布局，启动时要运行的一些命令，每个pane里各自需要的命令等等。我有一个叫<code>prod-log</code>的配置，大致如下:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">windows:</div><div class="line">    - logs:</div><div class="line">        layout: even-horizontal</div><div class="line">        synchronize: after</div><div class="line">        panes:</div><div class="line">            - ssh server1</div><div class="line">            - ssh server2</div><div class="line">            - ssh server3</div></pre></td></tr></table></figure>
+<p>这个配置，会自动打开3个pane，分别ssh到3台机器上。并且我设置了<code>synchronize: after</code>，启动后3个pane里接收相同的键盘操作。我只要输一次<code>tmux attach</code>命令，就可以让3个pane里的tmux都attach到之前保存的session里！</p>
+<p>最后，我还给一些常用的tmux，tmuxinator命令设置了alias，再一次减少打字数量。例如：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">alias tkill=&quot;tmux kill-session -t&quot;</div><div class="line">alias tls=&quot;tmux ls&quot;</div><div class="line">alias tatt=&quot;tmux attach -t&quot;</div><div class="line">alias ts=&quot;tmuxinator start&quot;</div></pre></td></tr></table></figure></p>
+<p>现在，<code>ts prod-log</code>加<code>tmux attach -t 0</code>，之前的9步操作2步搞定！</p>
+<p>希望看过这篇文章，你也决定用tmux。</p>
 
       
     </div>
@@ -428,8 +430,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/04/21/Python-logger-duplicate-messages/" rel="next" title="Python logger duplicate messages">
-                <i class="fa fa-chevron-left"></i> Python logger duplicate messages
+              <a href="/2017/04/19/命令行常用工具/" rel="next" title="命令行常用工具">
+                <i class="fa fa-chevron-left"></i> 命令行常用工具
               </a>
             
           </div>
@@ -437,10 +439,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2016/04/26/Python-unicode-str以及字符编码/" rel="prev" title="Python unicode, str以及字符编码">
-                Python unicode, str以及字符编码 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -693,9 +691,9 @@
 
     <script type="text/javascript">
       var disqus_shortname = 'mwshen';
-      var disqus_identifier = '2016/04/24/记一次尴尬的mac问题解决/';
+      var disqus_identifier = '2017/04/26/为什么要用tmux/';
 
-      var disqus_title = "记一次尴尬的mac问题解决";
+      var disqus_title = "为什么要用tmux";
 
 
       function run_disqus_script(disqus_script) {

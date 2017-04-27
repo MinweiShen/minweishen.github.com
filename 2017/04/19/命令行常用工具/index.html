@@ -95,7 +95,7 @@
 <meta property="og:site_name" content="放假的电话">
 <meta property="og:description" content="命令行工具，不会用虽然不是不可以，但是生产力确实大打折扣。给自己定下个小目标，每天刻意学一些，希望能帮助提高工作效率。
 由于用的是Mac，下面的命令跟linux并不一定完全相同，但是多数应该是差不多的。">
-<meta property="og:updated_time" content="2017-04-25T06:35:04.000Z">
+<meta property="og:updated_time" content="2017-04-26T18:17:54.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="命令行常用工具">
 <meta name="twitter:description" content="命令行工具，不会用虽然不是不可以，但是生产力确实大打折扣。给自己定下个小目标，每天刻意学一些，希望能帮助提高工作效率。
@@ -432,7 +432,7 @@
 <h1 id="ls"><a href="#ls" class="headerlink" title="ls"></a>ls</h1><p>ls命令显示文件夹内容, 常用的参数如下<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"># -a, 包含.开头的目录</div><div class="line"># -F, 在路径最后添加/,在可执行文件最后添加*，等等</div><div class="line"># -h, 与-l同时使用，给文件大小添加K,M,G等单位</div><div class="line"># -R, 递归显示子目录内容</div><div class="line"># -l, long format,显示更多信息</div><div class="line"># -r, 逆序（如果用某个参数排序了的话）</div></pre></td></tr></table></figure></p>
 <p>ls提供了不少参数，给显示的文件排序，可以结合<code>-l</code>, <code>-r</code>使用：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"># -S, by size</div><div class="line"># -t, by modified time</div><div class="line"># -u, by last access time</div><div class="line"># -U, by creation time</div></pre></td></tr></table></figure></p>
 <p>ls -l显示的文件权限信息，第一位表示是否是directory。之后，每3个一组，分别表示user，group，others的权限。</p>
-<h1 id="regular-expression"><a href="#regular-expression" class="headerlink" title="regular expression"></a>regular expression</h1><h1 id="tar"><a href="#tar" class="headerlink" title="tar"></a>tar</h1><h1 id="scp"><a href="#scp" class="headerlink" title="scp"></a>scp</h1><h1 id="awk"><a href="#awk" class="headerlink" title="awk"></a>awk</h1>
+<h1 id="regular-expression"><a href="#regular-expression" class="headerlink" title="regular expression"></a>regular expression</h1><h1 id="tar"><a href="#tar" class="headerlink" title="tar"></a>tar</h1><h1 id="scp"><a href="#scp" class="headerlink" title="scp"></a>scp</h1><h1 id="awk"><a href="#awk" class="headerlink" title="awk"></a>awk</h1><h1 id="bg-fg-ctrl-z-amp-and-jobs"><a href="#bg-fg-ctrl-z-amp-and-jobs" class="headerlink" title="bg, fg, ctrl-z, &amp; and jobs"></a>bg, fg, ctrl-z, &amp; and jobs</h1>
       
     </div>
 
@@ -477,6 +477,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/04/26/为什么要用tmux/" rel="prev" title="为什么要用tmux">
+                为什么要用tmux <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -553,7 +557,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">11</span>
+                <span class="site-state-item-count">12</span>
                 <span class="site-state-item-name">posts</span>
               </a>
             </div>
@@ -606,7 +610,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#grep"><span class="nav-number">1.</span> <span class="nav-text">grep</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#cat"><span class="nav-number">2.</span> <span class="nav-text">cat</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#cp"><span class="nav-number">3.</span> <span class="nav-text">cp</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#curl"><span class="nav-number">4.</span> <span class="nav-text">curl</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#find"><span class="nav-number">5.</span> <span class="nav-text">find</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#less"><span class="nav-number">6.</span> <span class="nav-text">less</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#ls"><span class="nav-number">7.</span> <span class="nav-text">ls</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#regular-expression"><span class="nav-number">8.</span> <span class="nav-text">regular expression</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#tar"><span class="nav-number">9.</span> <span class="nav-text">tar</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#scp"><span class="nav-number">10.</span> <span class="nav-text">scp</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#awk"><span class="nav-number">11.</span> <span class="nav-text">awk</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#grep"><span class="nav-number">1.</span> <span class="nav-text">grep</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#cat"><span class="nav-number">2.</span> <span class="nav-text">cat</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#cp"><span class="nav-number">3.</span> <span class="nav-text">cp</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#curl"><span class="nav-number">4.</span> <span class="nav-text">curl</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#find"><span class="nav-number">5.</span> <span class="nav-text">find</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#less"><span class="nav-number">6.</span> <span class="nav-text">less</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#ls"><span class="nav-number">7.</span> <span class="nav-text">ls</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#regular-expression"><span class="nav-number">8.</span> <span class="nav-text">regular expression</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#tar"><span class="nav-number">9.</span> <span class="nav-text">tar</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#scp"><span class="nav-number">10.</span> <span class="nav-text">scp</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#awk"><span class="nav-number">11.</span> <span class="nav-text">awk</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#bg-fg-ctrl-z-amp-and-jobs"><span class="nav-number">12.</span> <span class="nav-text">bg, fg, ctrl-z, & and jobs</span></a></li></ol></div>
             
 
           </div>
