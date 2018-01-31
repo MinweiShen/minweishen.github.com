@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    .app {
+      width: 100%;
+      max-width: 640px;
+      height: 100vh;
+      margin: 0 auto;
+      position: relative;
+    }
+    .app .vis {
+      height: calc(100vh - 80px);
+      position: relative;
+    }
+    .app .buttons {
+      height: 80px;
+      border-top: 2px solid #00e676;
+      text-align: center;
+      line-height: 80px;
+    }
+    .visualizer {
+      position: relative;
+      top: 20%;
+      width: 260px;
+      max-width: 260px;
+      height: 260px;
+      margin: 0 auto;
+      border: 2px solid #00e676;
+      border-radius: 50%;
+      cursor: pointer;
+    }
+    .visualizer #canvas {
+      position: relative;
+      top: 50px;
+      left: 40px;
+    }
+    .btn {
+      display: inline-block;
+      background-color: white;
+      border: 1px solid #eee;
+      border-radius: 2px;
+      height: 2.4em;
+      line-height: 1.6em;
+      width: 6em;
+      min-width: 6em;
+      padding: .4em .75em;
+      margin: 0 .5em;
+      vertical-align: middle;
+      cursor: pointer;
+    }
+    .btn:hover {
+      background-color: #fafafa;
+    }
+    .btn .icon {
+      display: inline-block;
+      vertical-align: middle;
+      height: 20px;
+      width: 20px;
+      min-width: 20px;
+      position: relative;
+    }
+    .btn .icon.stop {
+      border: 1px solid #f44336;
+      border-radius: 50%;
+      background-color: #f44336;
+    }
+    .btn .icon.start {
+      width: 0;
+      height: 0;
+      min-width: 0;
+      border-left: 14px solid #f44336;
+      border-top: 12px solid transparent;
+      border-bottom: 12px solid transparent;
+    }
+  </style>
+  <title>Repeater</title>
+</head>
+
+<body>
+  <div class="app">
+      <audio id="clip"></audio>
+      <div class="vis">
+        <div class="visualizer">
+          <canvas id="canvas" height="160" width="180"></canvas>
+        </div>
+      </div>
+      <div class="buttons">
+        <span id="operator" class="btn">
+          <span class="icon start"></span>
+        </span>
+      </div>
+  </div>
+  <script src="./js/src/repeater/repeater.js"></script>
+  <script src="./js/src/repeater/index.js"></script>
+</body>
+</html>
