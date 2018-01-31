@@ -11,5 +11,10 @@
       'click',
       function(){
         document.querySelector('#clip').play();
+    })
+    .addEventListener(
+      'touchstart',
+      function(){
+        document.querySelector('#clip').play();
     });
 })();
