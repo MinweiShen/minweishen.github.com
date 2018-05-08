@@ -15,7 +15,7 @@
     "function": callFunction,
     "args": ""
   }
-  var myboards = null;
+  window.myboards = null;
   neb.api.call(from, contractAddress, value, nonce, gas_price, gas_limit, contract).then(function (resp) {
     myboards = JSON.parse(resp.result);
     console.log(myboards);
