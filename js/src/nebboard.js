@@ -1,8 +1,8 @@
 
 (function () {
-  var chain = "https://testnet.nebulas.io";
-  var from = "n1KcViXzMGiUEVXt9cnnRnE9s5iB3rX8gjt";
-  var contractAddress = "n1fBX91J9SLH3QMg62Eh1SdXEFcK4r1Szxc";
+  var chain = "https://mainnet.nebulas.io";
+  var from = "n1VB5MiuSPdYwkxbVchEYci4t4fTNxiVPLg";
+  var contractAddress = "n1mWJ6YVrNTEW7nuATnJsLScDr9NQ2eJKWE";
   var nebulas = require('nebulas');
   var neb = new nebulas.Neb();
   neb.setRequest(new nebulas.HttpRequest(chain));
@@ -18,7 +18,6 @@
   window.myboards = null;
   neb.api.call(from, contractAddress, value, nonce, gas_price, gas_limit, contract).then(function (resp) {
     myboards = JSON.parse(resp.result);
-    console.log(myboards);
     var post_body = $('.post-body');
     result = [];
     var array = Object.keys(myboards);
