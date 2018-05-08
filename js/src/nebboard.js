@@ -22,7 +22,7 @@
     var post_body = $('.post-body');
     result = [];
     var array = Object.keys(myboards);
-    for (var i = array; i >=0; i--) {
+    for (var i = array.length; i >=0; i--) {
         var key = array[i];
         result.push(
         '<div class="my-neb-board">',
