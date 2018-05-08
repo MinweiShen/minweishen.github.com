@@ -21,11 +21,13 @@
     console.log(myboards);
     var post_body = $('.post-body');
     result = [];
-    for (var i = myboards.length - 1; i >=0; i--) {
+    var array = Object.keys(myboards);
+    for (var i = array; i >=0; i--) {
+        var key = array[i];
         result.push(
         '<div class="my-neb-board">',
-        '<div class="board-time">', myboards[i].updated_at, '</div>',
-        '<div class="content">',myboards[i].content,'</div>',
+        '<div class="board-time">', myboards[key].updated_at, '</div>',
+        '<div class="content">',myboards[key].content,'</div>',
         '</div>')
     };
     post_body.append($(result.join('')));
