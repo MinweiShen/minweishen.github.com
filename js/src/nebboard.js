@@ -22,8 +22,9 @@
     var post_body = $('.post-body');
     result = [];
     var array = Object.keys(myboards);
-    for (var i = array.length; i >=0; i--) {
+    for (var i = array.length-1; i >=0; i--) {
         var key = array[i];
+        console.log(key, i);
         result.push(
         '<div class="my-neb-board">',
         '<div class="board-time">', myboards[key].updated_at, '</div>',
