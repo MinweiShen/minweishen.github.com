@@ -1,0 +1,16 @@
+.my-neb-board {
+    margin: 16px 0;
+    padding: 8px;
+    border: 1px solid rgb(233, 232, 233);
+    -webkit-box-shadow: 4px 7px 14px 2px rgba(230, 227, 230, 1);
+    -moz-box-shadow: 4px 7px 14px 2px rgba(230, 227, 230, 1);
+    box-shadow: 4px 7px 14px 2px rgba(230, 227, 230, 1);
+}
+
+.my-neb-board .board-time {
+    font-size: 12px;
+}
+
+.my-neb-board .content {
+    font-size: 24px;
+}
