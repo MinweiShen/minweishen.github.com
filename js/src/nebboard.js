@@ -2,7 +2,7 @@
 (function () {
   var chain = "https://mainnet.nebulas.io";
   var from = "n1VB5MiuSPdYwkxbVchEYci4t4fTNxiVPLg";
-  var contractAddress = "n1mWJ6YVrNTEW7nuATnJsLScDr9NQ2eJKWE";
+  var contractAddress = "n1tiRvwy5oPocgkoW2JbqXao7rEUN5dXyLv";
   var nebulas = require('nebulas');
   var neb = new nebulas.Neb();
   neb.setRequest(new nebulas.HttpRequest(chain));
