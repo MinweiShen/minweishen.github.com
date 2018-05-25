@@ -1,0 +1,50 @@
+.navbar {
+    background-color: hsl(204, 86%, 53%);
+}
+
+.navbar-start .navbar-item {
+    font-weight: bold;
+    color: hsl(0, 0%, 86%);
+}
+.navbar-start .navbar-item:hover {
+    background-color: hsl(204, 86%, 53%);
+    color: white;
+}
+
+.navbar-start .navbar-item.is-active {
+    color: white;
+}
+
+.main-section {
+    padding: 1em 1.5em;
+}
+.make-wish .control,
+#wish-pool .control {
+    text-align: right;
+}
+
+#wishSubmit,
+#renew {
+    margin: .5em 0;
+}
+
+.main-section {
+    overflow: scroll;
+    margin-bottom: 40px;
+}
+
+.message-header {
+    min-height: 20px;
+}
+
+.fulfill-button {
+    padding-top: 0;
+    padding-bottom: 0;
+}
+
+.footer {
+    width: 100%;
+    padding: .5rem 1.5rem;
+    position: fixed;
+    bottom: 0;
+}

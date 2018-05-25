@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>心愿</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.1/css/bulma.min.css">
+  <link rel="stylesheet" href="static/style.css">
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+  <script defer src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
+  <script src="static/nebulas.js"></script>
+  <script src="static/nebPay.js"></script>
+</head>
+
+<body>
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <div class="navbar-burger burger" data-target="menus">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </div>
+
+    <div id="menus" class="navbar-menu">
+      <div class="navbar-start">
+        <a class="navbar-item is-active" data-name='mine'>
+          我的心愿
+        </a>
+        <a class="navbar-item" data-name='pool'>
+          心愿池
+        </a>
+      </div>
+
+      <div class="navbar-end">
+        <div class="navbar-item">
+          <div class="field is-grouped">
+            <p class="control">
+              <a class="button is-black" href="https://github.com/MinweiShen/my-wish" target="_blank">
+                <span class="icon">
+                  <i class="fab fa-github"></i>
+                </span>
+                <span>Github</span>
+              </a>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <div class="notification is-primary" id="extensionPopup" style="display: none">
+    <button class="delete"></button>
+    亲爱的用户，为了体验本功能，请先安装
+    <a href="https://github.com/ChengOrangeJu/WebExtensionWallet">WebExtensionWallet</a>
+  </div>
+
+  <div class="section main-section">
+    <div class="container">
+      <div class="columns">
+        <div class="column is-half is-offset-one-quarter">
+          <div id="my-wishes">
+            <div class="make-wish">
+              <textarea id="wishInput" class="textarea" placeholder="在区块链上，写下你的愿望"></textarea>
+              <div class="control">
+                <button id="wishSubmit" class="button is-info">就是它了</button>
+              </div>
+            </div>
+            <div class="wishes">
+              <div class="tabs">
+                <ul>
+                  <li class="is-active" data-name="mine">
+                    <a>我的愿望</a>
+                  </li>
+                  <li data-name="fulfill">
+                    <a>我承包的愿望</a>
+                  </li>
+                </ul>
+              </div>
+              <div id="wish-list">
+                  <div class="fa-3x"><i class="fas fa-spinner fa-spin"></i></div>
+              </div>
+            </div>
+          </div>
+          <div id="wish-pool" style="display: none">
+              <div class="control">
+                  <button id="renew" class="button is-info">换一批</button>
+              </div>
+              <div id="pool-list"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="content has-text-centered">
+        <p>
+          Proudly supported by <a href="https://nebulas.io/">Nebulas.io</a>
+        </p>
+      </div>
+    </div>
+  </footer>
+  <script src="static/wish.js"></script>
+</body>
+
+</html>
