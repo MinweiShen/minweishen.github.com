@@ -186,7 +186,7 @@ function funcIntervalQuery(txhash) {
       if (respObject.code === 0) {
         clearInterval(intervalQuery)
         setTimeout(function () {
-          window.location.href = '/';
+          window.location.href = '/wish.html';
         }, 3000);
       }
     })
