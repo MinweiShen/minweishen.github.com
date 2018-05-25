@@ -1,5 +1,5 @@
-const dappAddress = "n1tbYXSTEufRdqtgATZxwQyheCV5PBNSML4";
-const netUrl = "https://testnet.nebulas.io";
+const dappAddress = "n1pSM1UgRCThGQ74TZR3LAxhRRR5DhdE6Xe";
+const netUrl = "https://mainnet.nebulas.io";
 const NebPay = require("nebpay");
 const nebPay = new NebPay();
 var intervalQuery;
